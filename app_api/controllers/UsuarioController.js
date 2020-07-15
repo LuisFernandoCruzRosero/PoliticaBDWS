@@ -1,8 +1,48 @@
 var UsuarioDao = require("../../app_core/dao/UsuarioDao");
 var Respuesta = require("../../app_core/helpers/respuesta");
 
-var findAllDigitador = function(req, res) {
-    UsuarioDao.findAllDigitador().then(function(usuario) {
+var findAllUsuarioCandidato = function(req, res) {
+    UsuarioDao.findAllUsuarioCandidato().then(function(usuario) {
+        Respuesta.sendJsonResponse(res, 200, usuario);
+    }).catch(function(error) {
+        Respuesta.sendJsonResponse(res, 500, error)
+    });
+};
+
+var findAllUsuarioCandidatoCedula = function(req, res) {
+    UsuarioDao.findAllUsuarioCandidatoCedula(req.params.ced_usuario).then(function(usuario) {
+        Respuesta.sendJsonResponse(res, 200, usuario);
+    }).catch(function(error) {
+        Respuesta.sendJsonResponse(res, 500, error)
+    });
+};
+
+var findAllUsuarioAdministrador = function(req, res) {
+    UsuarioDao.findAllUsuarioAdministrador().then(function(usuario) {
+        Respuesta.sendJsonResponse(res, 200, usuario);
+    }).catch(function(error) {
+        Respuesta.sendJsonResponse(res, 500, error)
+    });
+};
+
+var findAllUsuarioAdministradorCedula = function(req, res) {
+    UsuarioDao.findAllUsuarioAdministradorCedula(req.params.ced_usuario).then(function(usuario) {
+        Respuesta.sendJsonResponse(res, 200, usuario);
+    }).catch(function(error) {
+        Respuesta.sendJsonResponse(res, 500, error)
+    });
+};
+
+var findAllUsuarioCoordinador = function(req, res) {
+    UsuarioDao.findAllUsuarioCoordinador().then(function(usuario) {
+        Respuesta.sendJsonResponse(res, 200, usuario);
+    }).catch(function(error) {
+        Respuesta.sendJsonResponse(res, 500, error)
+    });
+};
+
+var findAllUsuarioCoordinadorCedula = function(req, res) {
+    UsuarioDao.findAllUsuarioCoordinadorCedula(req.params.ced_usuario).then(function(usuario) {
         Respuesta.sendJsonResponse(res, 200, usuario);
     }).catch(function(error) {
         Respuesta.sendJsonResponse(res, 500, error)
@@ -17,24 +57,16 @@ var findAllUsuario = function(req, res) {
     });
 };
 
-var findAllUsuarioOcupacion = function(req, res) {
-    UsuarioDao.findAllUsuarioOcupacion(req.params.ocupacion).then(function(usuario) {
+var findAllUsuarioCedula = function(req, res) {
+    UsuarioDao.findAllUsuarioCedula(req.params.ced_usuario).then(function(usuario) {
         Respuesta.sendJsonResponse(res, 200, usuario);
     }).catch(function(error) {
         Respuesta.sendJsonResponse(res, 500, error)
     });
 };
 
-var findAllDigitadorById = function(req, res) {
-    UsuarioDao.findAllDigitadorById(req.params.id_usuario).then(function(usuario) {
-        Respuesta.sendJsonResponse(res, 200, usuario);
-    }).catch(function(error) {
-        Respuesta.sendJsonResponse(res, 500, error)
-    });
-};
-
-var findAllDigitadorCedula = function(req, res) {
-    UsuarioDao.findAllDigitadorCedula(req.params.ced_usu).then(function(usuario) {
+var findByIdUsuario = function(req, res) {
+    UsuarioDao.findByIdUsuario(req.params.ced_usuario).then(function(usuario) {
         Respuesta.sendJsonResponse(res, 200, usuario);
     }).catch(function(error) {
         Respuesta.sendJsonResponse(res, 500, error)
@@ -44,23 +76,20 @@ var findAllDigitadorCedula = function(req, res) {
 var updateUsuario = function(req, res) {
     var id_usuario = req.params.id_usuario;
     var actualizar = {
-        ced_usu: req.body.ced_usu,
-        nom_usu: req.body.nom_usu,
-        bar_usu: req.body.bar_usu,
-        tel_usu: req.body.tel_usu,
-        id_tipo_usu: req.body.id_tipo_usu,
-        activo: req.body.activo,
+        ced_usuario: req.body.ced_usuario,
+        nom_usuario: req.body.nom_usuario,
+        id_lugar: req.body.id_lugar,
+        id_mesa: req.body.id_mesa,
+        id_barrio: req.body.id_barrio,
+        login: req.body.login,
         contrasena: req.body.contrasena,
-        ocupacion: req.body.ocupacion,
-        user_usu: req.body.user_usu,
-        mesa: req.body.mesa,
+        id_tipo_usuario: req.body.id_tipo_usuario,
+        tel_usuario: req.body.tel_usuario,
+        activo: req.body.activo,
+        id_comunaB: req.body.id_comunaB,
+        id_comunaL: req.body.id_comunaL,
         municipio: req.body.municipio,
         departamento: req.body.departamento,
-        puesto: req.body.puesto,
-        id_lider: req.body.id_lider,
-        id_coordinador: req.body.id_coordinador,
-        id_sector: req.body.id_sector,
-        id_comuna: req.body.id_comuna,
     };
     UsuarioDao.updateUsuario(actualizar, id_usuario, function(variable, err) {
             if (err) {
@@ -74,47 +103,35 @@ var updateUsuario = function(req, res) {
             Respuesta.sendJsonResponse(res, 500, err);
         });
 
-}
-
-var findById = function(req, res) {
-    UsuarioDao.findById(req.params.id_usuario).then(function(usuario) {
-        Respuesta.sendJsonResponse(res, 200, usuario);
-    }).catch(function(error) {
-        Respuesta.sendJsonResponse(res, 500, { "error": 'se ha producido un error en la consulta' });
-    });
 };
 
-
-var crear = function(req, res) {
+var insertUsuario = function(req, res) {
     var usuario = {
-        ced_usu: req.body.ced_usu,
-        nom_usu: req.body.nom_usu,
-        bar_usu: req.body.bar_usu,
-        tel_usu: req.body.tel_usu,
-        id_tipo_usu: req.body.id_tipo_usu,
-        activo: req.body.activo,
+        ced_usuario: req.body.ced_usuario,
+        nom_usuario: req.body.nom_usuario,
+        id_lugar: req.body.id_lugar,
+        id_mesa: req.body.id_mesa,
+        id_barrio: req.body.id_barrio,
+        login: req.body.login,
         contrasena: req.body.contrasena,
-        ocupacion: req.body.ocupacion,
-        user_usu: req.body.user_usu,
-        mesa: req.body.mesa,
+        id_tipo_usuario: req.body.id_tipo_usuario,
+        tel_usuario: req.body.tel_usuario,
+        activo: req.body.activo,
+        id_comunaB: req.body.id_comunaB,
+        id_comunaL: req.body.id_comunaL,
         municipio: req.body.municipio,
         departamento: req.body.departamento,
-        puesto: req.body.puesto,
-        id_lider: req.body.id_lider,
-        id_coordinador: req.body.id_coordinador,
-        id_sector: req.body.id_sector,
-        id_comuna: req.body.id_comuna,
     };
-    UsuarioDao.crear(usuario).then(function(usuario) {
+    UsuarioDao.insertUsuario(usuario).then(function(usuario) {
         Respuesta.sendJsonResponse(res, 200, usuario)
     }).catch(function(error) {
         Respuesta.sendJsonResponse(res, 500, error);
     });
 }
 
-var deleteById = function(req, res) {
-    UsuarioDao.deleteById(req.params.id_usuario).then(function(coordinador) {
-        if (coordinador == 1) {
+var deleteByIdUsuario = function(req, res) {
+    UsuarioDao.deleteByIdUsuario(req.params.id_usuario).then(function(usuario) {
+        if (usuario == 1) {
             Respuesta.sendJsonResponse(res, 200, { "mensaje": "registro eliminado" });
         } else {
             Respuesta.sendJsonResponse(res, 404, { "mensaje": "registro no encontrado" });
@@ -124,12 +141,15 @@ var deleteById = function(req, res) {
     });
 };
 
+module.exports.findAllUsuarioCandidato = findAllUsuarioCandidato;
+module.exports.findAllUsuarioCandidatoCedula = findAllUsuarioCandidatoCedula;
+module.exports.findAllUsuarioAdministradorCedula = findAllUsuarioAdministradorCedula;
+module.exports.findAllUsuarioAdministrador = findAllUsuarioAdministrador;
+module.exports.findAllUsuarioCoordinadorCedula = findAllUsuarioCoordinadorCedula;
 module.exports.findAllUsuario = findAllUsuario;
+module.exports.findAllUsuarioCedula = findAllUsuarioCedula;
+module.exports.findByIdUsuario = findByIdUsuario;
 module.exports.updateUsuario = updateUsuario;
-module.exports.findById = findById;
-module.exports.crear = crear;
-module.exports.findAllDigitador = findAllDigitador;
-module.exports.deleteById = deleteById;
-module.exports.findAllUsuarioOcupacion = findAllUsuarioOcupacion;
-module.exports.findAllDigitadorCedula = findAllDigitadorCedula;
-module.exports.findAllDigitadorById = findAllDigitadorById;
+module.exports.insertUsuario = insertUsuario;
+module.exports.deleteByIdUsuario = deleteByIdUsuario;
+module.exports.findAllUsuarioCoordinador = findAllUsuarioCoordinador;

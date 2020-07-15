@@ -4,7 +4,7 @@ var sequelize = Models.sequelize;
 var findAllTipoUsuario = function() {
     return Models.TipoUsuario.findAll({
         order: [
-            ['nom_tipo_usu', 'ASC']
+            ['nom_tipo_usuario', 'ASC']
         ],
     });
 };

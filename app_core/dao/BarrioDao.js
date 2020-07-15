@@ -1,32 +1,24 @@
 var Models = require("../models/index");
 var sequelize = Models.sequelize;
 
+var insertBarrio = function(barrio) {
+    return Models.Barrio.create({
+        nom_barrio: barrio.nom_barrio,
+        latitud: barrio.latitud,
+        longitud: barrio.longitud,
+        zona_roja: barrio.zona_roja,
+        id_comunaB: barrio.id_comunaB,
+    });
+}
+
 var findAllBarrio = function() {
     return Models.Barrio.findAll({
         order: [
-            ['nom_bar', 'ASC']
+            ['nom_barrio', 'ASC']
         ],
     });
 };
 
-var findAllBarrioComuna = function(id_comuna) {
-    return Models.Barrio.findAll({
-        where: {
-            id_comuna: id_comuna
-        },
-        order: [
-            ['nom_sec', 'ASC']
-        ],
-    });
-};
-
-var findById = function(id_barrio) {
-    return Models.Barrio.find({
-        where: {
-            id_barrio: id_barrio
-        }
-    });
-};
 
 var updateBarrio = function(barrio, id_barrio, callback) {
     return Models.Barrio.find({
@@ -37,11 +29,14 @@ var updateBarrio = function(barrio, id_barrio, callback) {
         .then(function(resultado) {
             if (resultado) {
                 resultado.updateAttributes({
-                        nom_bar: barrio.nom_bar,
-                        id_comuna: barrio.id_comuna,
+                        nom_barrio: barrio.nom_barrio,
+                        latitud: barrio.latitud,
+                        longitud: barrio.longitud,
+                        zona_roja: barrio.zona_roja,
+                        id_comunaB: barrio.id_comunaB,
                     })
-                    .then(function(usuarioActualizada) {
-                        Models.Barrio.findById(usuarioActualizada.id_barrio)
+                    .then(function(barrioActualizada) {
+                        Models.Barrio.findById(barrioActualizada.id_barrio)
                             .then(function(resultadoFinal) {
                                 callback(resultadoFinal, null);
                             })
@@ -59,16 +54,9 @@ var updateBarrio = function(barrio, id_barrio, callback) {
         .catch(function(err) {
             callback(null, err)
         });
-}
+};
 
-var crear = function(barrio) {
-    return Models.Barrio.create({
-        nom_bar: barrio.nom_bar,
-        id_comuna: barrio.id_comuna,
-    });
-}
-
-var deleteById = function(id_barrio) {
+var deleteByIdBarrio = function(id_barrio) {
     return Models.Barrio.destroy({
         where: {
             id_barrio: id_barrio
@@ -76,9 +64,28 @@ var deleteById = function(id_barrio) {
     });
 };
 
+var findAllBarrioComuna = function(id_comunaB) {
+    return Models.Barrio.findAll({
+        where: {
+            id_comunaB: id_comunaB
+        },
+        order: [
+            ['nom_barrio', 'ASC']
+        ],
+    });
+};
+
+var findByIdBarrio = function(id_barrio) {
+    return Models.Barrio.find({
+        where: {
+            id_barrio: id_barrio
+        }
+    });
+};
+
+module.exports.insertBarrio = insertBarrio;
 module.exports.findAllBarrio = findAllBarrio;
-module.exports.findAllBarrioComuna = findAllBarrioComuna;
 module.exports.updateBarrio = updateBarrio;
-module.exports.deleteById = deleteById;
-module.exports.findById = findById;
-module.exports.crear = crear;
+module.exports.deleteByIdBarrio = deleteByIdBarrio;
+module.exports.findAllBarrioComuna = findAllBarrioComuna;
+module.exports.findByIdBarrio = findByIdBarrio;
