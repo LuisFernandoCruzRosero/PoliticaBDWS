@@ -1,9 +1,9 @@
-/*jshintindent:2*/
+/*modelo utilizado para BD tabla AGENDA:2*/
 module.exports = function(sequelize,
     DataTypes) {
     return sequelize.define('Agenda',
 
-        {
+        { /*campos*/
             id_agenda: {
                 type: DataTypes.INTEGER,
                 allowNull: false,

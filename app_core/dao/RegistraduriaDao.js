@@ -1,6 +1,7 @@
 var Models = require("../models/index");
 var sequelize = Models.sequelize;
 
+/*Insertar un dato en la tabla registraduria*/
 var insertRegistraduria = function(registraduria) {
     return Models.Registraduria.create({
         ced_registraduria: registraduria.ced_usu,
@@ -12,6 +13,7 @@ var insertRegistraduria = function(registraduria) {
     });
 };
 
+/*consultar todos los datos de la tabla registraduria ordenados por id*/
 var findAllRegistraduria = function() {
     return Models.Registraduria.findAll({
         order: [
@@ -20,6 +22,7 @@ var findAllRegistraduria = function() {
     });
 };
 
+/*eliminar un dato de la tabla registraduria*/
 var deleteByIdRegistraduria = function(id_registraduria) {
     return Models.Registraduria.destroy({
         where: {
@@ -28,7 +31,7 @@ var deleteByIdRegistraduria = function(id_registraduria) {
     });
 };
 
-
+/*consulta un dato de la tabla barrio en especifico*/
 var findByIdRegistraduriaCedula = function(ced_registraduria) {
     return Models.Registraduria.find({
         where: {
@@ -39,7 +42,7 @@ var findByIdRegistraduriaCedula = function(ced_registraduria) {
         ],
     });
 };
-
+/*consulta un dato de la tabla barrio en especifico*/
 var findByIdRegistraduria = function(id_registraduria) {
     return Models.Registraduria.findAll({
         where: {

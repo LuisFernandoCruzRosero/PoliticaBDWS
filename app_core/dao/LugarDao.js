@@ -1,6 +1,6 @@
 var Models = require("../models/index");
 var sequelize = Models.sequelize;
-
+/*Insertar un dato en la tabla lugar*/
 var insertLugar = function(lugar) {
     return Models.Lugar.create({
         nom_lugar: lugar.nom_lugar,
@@ -10,7 +10,7 @@ var insertLugar = function(lugar) {
         id_comunaL: lugar.id_comunaL,
     });
 };
-
+/*consultar todos los datos de la tabla lugar ordenados por nombre*/
 var findAllLugar = function() {
     return Models.Lugar.findAll({
         order: [
@@ -18,7 +18,7 @@ var findAllLugar = function() {
         ],
     });
 };
-
+/*modificar un dato de la tabla lugar*/
 var updateLugar = function(lugar, id_lugar, callback) {
     return Models.Lugar.find({
             where: {
@@ -55,6 +55,7 @@ var updateLugar = function(lugar, id_lugar, callback) {
         });
 };
 
+/*eliminar un dato de la tabla lugar*/
 var deleteByIdLugar = function(id_lugar) {
     return Models.Lugar.destroy({
         where: {
@@ -63,6 +64,7 @@ var deleteByIdLugar = function(id_lugar) {
     });
 };
 
+/*consulta los datos de la tabla lugar filtrados por comuna*/
 var findAllLugarComuna = function(id_comunaL) {
     return Models.Lugar.findAll({
         where: {
@@ -74,6 +76,7 @@ var findAllLugarComuna = function(id_comunaL) {
     });
 };
 
+/*consulta un dato de la tabla lugar en especifico*/
 var findByIdLugar = function(id_lugar) {
     return Models.Lugar.findAll({
         where: {

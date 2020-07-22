@@ -1,4 +1,4 @@
-/*jshintindent:2*/
+/*modelo utilizado para BD tabla TIPO_USUARIO:2*/
 module.exports = function(sequelize,
     DataTypes) {
     return sequelize.define('TipoUsuario',

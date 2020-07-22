@@ -1,16 +1,22 @@
 var Models = require("../models/index");
 var sequelize = Models.sequelize;
 
+/*Insertar un dato en la tabla comuna*/
 var insertComuna = function(comuna) {
-    return Models.Comuna.create({
-        nom_comuna: comuna.nom_comuna
-    });
-}
-
+        return Models.Comuna.create({
+            nom_comuna: comuna.nom_comuna
+        });
+    }
+    /*consultar todos los datos de la tabla comuna de manera ordena */
 var findAllComuna = function() {
-    return Models.Comuna.findAll({});
+    return Models.Comuna.findAll({
+        order: [
+            ['nom_comuna', 'ASC']
+        ],
+    });
 };
 
+/*modificar un dato de la tabla comuna*/
 var updateComuna = function(comuna, id_comuna, callback) {
     return Models.Comuna.find({
             where: {
@@ -43,6 +49,7 @@ var updateComuna = function(comuna, id_comuna, callback) {
         });
 }
 
+/*eliminar un dato de la tabla comuna*/
 var deleteByIdComuna = function(id_comuna) {
     return Models.Comuna.destroy({
         where: {
@@ -51,6 +58,7 @@ var deleteByIdComuna = function(id_comuna) {
     });
 };
 
+/*consulta un dato de la tabla comuna en especifico*/
 var findByIdComuna = function(id_comuna) {
     return Models.Comuna.find({
         where: {

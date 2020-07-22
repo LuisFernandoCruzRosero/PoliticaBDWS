@@ -1,10 +1,9 @@
 var Models = require("../models/index");
 var sequelize = Models.sequelize;
-
+/*consultar todos los datos de la tabla lugarmesa */
 var findAllLugarMesa = function() {
     return Models.LugarMesa.findAll({});
 };
-
 var findAllByIdLugarMesa = function(id_lugar) {
     return Models.LugarMesa.findAll({
         where: {
@@ -15,7 +14,7 @@ var findAllByIdLugarMesa = function(id_lugar) {
         ],
     });
 };
-
+/*consulta un dato de la tabla lugarmesa en especifico*/
 var findByIdLugarMesa = function(id_lugar, id_mesa) {
     return Models.LugarMesa.findAll({
         where: {
@@ -24,7 +23,7 @@ var findByIdLugarMesa = function(id_lugar, id_mesa) {
         }
     });
 };
-
+/*modificar un dato de la tabla lugarmesa*/
 var updateLugarMesa = function(lugarMesa, id_lugar_mesa, callback) {
     return Models.LugarMesa.find({
             where: {
@@ -57,14 +56,14 @@ var updateLugarMesa = function(lugarMesa, id_lugar_mesa, callback) {
             callback(null, err)
         });
 };
-
+/*Insertar un dato en la tabla lugarmesa*/
 var insertLugarMesa = function(lugarMesa) {
-    return Models.LugarMesa.create({
-        id_lugar: lugarMesa.id_lugar,
-        id_mesa: lugarMesa.id_mesa,
-    });
-}
-
+        return Models.LugarMesa.create({
+            id_lugar: lugarMesa.id_lugar,
+            id_mesa: lugarMesa.id_mesa,
+        });
+    }
+    /*eliminar un dato de la tabla lugarmesa*/
 var deleteByIdLugarMesa = function(id_lugar_mesa) {
     return Models.LugarMesa.destroy({
         where: {

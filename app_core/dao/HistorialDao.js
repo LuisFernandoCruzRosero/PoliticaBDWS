@@ -1,6 +1,7 @@
 var Models = require("../models/index");
 var sequelize = Models.sequelize;
 
+/*Insertar un dato en la tabla historial*/
 var insertHistorial = function(historial) {
     return Models.Historial.create({
         fec_historial: historial.fec_historial,
@@ -9,7 +10,7 @@ var insertHistorial = function(historial) {
     });
 };
 
-
+/*consultar todos los datos de la tabla historial ordenados por fecha*/
 var findAllHistorial = function() {
     return Models.Historial.findAll({
         order: [
@@ -18,6 +19,7 @@ var findAllHistorial = function() {
     });
 };
 
+/*consulta los datos de la tabla historial filtrados por lugar*/
 var findAllHistorialLugar = function(id_lugar) {
     return Models.Historial.findAll({
         where: {
@@ -28,7 +30,7 @@ var findAllHistorialLugar = function(id_lugar) {
         ],
     });
 };
-
+/*consulta los datos de la tabla historial filtrados por fecha*/
 var findAllHistorialFecha = function(fec_historial) {
     return Models.Historial.findAll({
         where: {
@@ -39,7 +41,7 @@ var findAllHistorialFecha = function(fec_historial) {
         ],
     });
 };
-
+/*consulta un dato de la tabla historial en especifico*/
 var findByIdHistorial = function(id_historial) {
     return Models.Historial.find({
         where: {

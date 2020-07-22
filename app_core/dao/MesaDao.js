@@ -1,16 +1,16 @@
 var Models = require("../models/index");
 var sequelize = Models.sequelize;
-
+/*Insertar un dato en la tabla mesa*/
 var insertMesa = function(mesa) {
-    return Models.Mesa.create({
-        nom_mesa: mesa.nom_mesa
-    });
-}
-
+        return Models.Mesa.create({
+            nom_mesa: mesa.nom_mesa
+        });
+    }
+    /*consultar todos los datos de la tabla mesa*/
 var findAllMesa = function() {
     return Models.Mesa.findAll({});
 };
-
+/*modificar un dato de la tabla mesa*/
 var updateMesa = function(mesa, id_mesa, callback) {
     return Models.Mesa.find({
             where: {
@@ -43,7 +43,7 @@ var updateMesa = function(mesa, id_mesa, callback) {
         });
 };
 
-
+/*eliminar un dato de la tabla mesa*/
 var deleteByIdMesa = function(id_mesa) {
     return Models.Mesa.destroy({
         where: {
@@ -52,6 +52,7 @@ var deleteByIdMesa = function(id_mesa) {
     });
 };
 
+/*consulta un dato de la tabla mesa en especifico*/
 var findByIdMesa = function(id_mesa) {
     return Models.Mesa.find({
         where: {

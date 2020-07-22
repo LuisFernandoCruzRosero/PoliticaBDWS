@@ -1,6 +1,6 @@
 var Models = require("../models/index");
 var sequelize = Models.sequelize;
-
+/*Insertar un dato en la tabla agenda*/
 var insertAgenda = function(agenda) {
     return Models.Agenda.create({
         fecha: agenda.fecha,
@@ -9,11 +9,11 @@ var insertAgenda = function(agenda) {
         id_usuario: agenda.id_usuario,
     });
 };
-
+/*consultar todos los datos de la agenda*/
 var findAllAgenda = function() {
     return Models.Agenda.findAll({});
 };
-
+/*eliminar un dato de la agenda*/
 var deleteByIdAgenda = function(id_agenda) {
     return Models.Agenda.destroy({
         where: {
@@ -22,7 +22,7 @@ var deleteByIdAgenda = function(id_agenda) {
     });
 };
 
-
+/*modificar un dato de la agenda*/
 var updateAgenda = function(agenda, id_agenda, callback) {
     return Models.Agenda.find({
             where: {
@@ -58,7 +58,7 @@ var updateAgenda = function(agenda, id_agenda, callback) {
         });
 };
 
-
+/*consulta los datos de la agenda filtrados por usuarios*/
 var findAllAgendaUsuario = function(id_usuario) {
     return Models.Agenda.findAll({
         where: {
@@ -69,7 +69,7 @@ var findAllAgendaUsuario = function(id_usuario) {
         ],
     });
 };
-
+/*consulta un dato de la agenda en especifico*/
 var findByIdAgenda = function(id_agenda) {
     return Models.Agenda.findAll({
         where: {
@@ -78,7 +78,7 @@ var findByIdAgenda = function(id_agenda) {
     });
 };
 
-
+/*consulta los datos de la agenda filtrados por fecha*/
 var findAllAgendaFecha = function(fecha) {
     return Models.Agenda.findAll({
         where: {

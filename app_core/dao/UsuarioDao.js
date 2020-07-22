@@ -1,6 +1,6 @@
 var Models = require("../models/index");
 var sequelize = Models.sequelize;
-
+/*consulta los datos de la tabla usuario filtrados por candidato*/
 var findAllUsuarioCandidato = function() {
     return Models.Usuario.find({
         where: {
@@ -8,7 +8,7 @@ var findAllUsuarioCandidato = function() {
         }
     });
 };
-
+/*consulta los datos de la tabla usuario filtrados por candidatocedula*/
 var findAllUsuarioCandidatoCedula = function(ced_usuario) {
     return Models.Usuario.find({
         where: {
@@ -17,7 +17,7 @@ var findAllUsuarioCandidatoCedula = function(ced_usuario) {
         }
     });
 };
-
+/*consulta los datos de la tabla usuario filtrados por administrador*/
 var findAllUsuarioAdministrador = function() {
     return Models.Usuario.find({
         where: {
@@ -25,7 +25,7 @@ var findAllUsuarioAdministrador = function() {
         }
     });
 };
-
+/*consulta los datos de la tabla usuario filtrados por admiistradorcedula*/
 var findAllUsuarioAdministradorCedula = function(ced_usuario) {
     return Models.Usuario.find({
         where: {
@@ -34,7 +34,7 @@ var findAllUsuarioAdministradorCedula = function(ced_usuario) {
         }
     });
 };
-
+/*consulta los datos de la tabla usuario filtrados por coordinador*/
 var findAllUsuarioCoordinador = function() {
     return Models.Usuario.findAll({
         where: {
@@ -46,7 +46,7 @@ var findAllUsuarioCoordinador = function() {
     });
 };
 
-
+/*consulta los datos de la tabla usuario filtrados por coordinadorcedula*/
 var findAllUsuarioCoordinadorCedula = function(ced_usuario) {
     return Models.Usuario.find({
         where: {
@@ -55,7 +55,7 @@ var findAllUsuarioCoordinadorCedula = function(ced_usuario) {
         }
     });
 };
-
+/*consultar todos los datos de la tabla usuario ordenados por nombre*/
 var findAllUsuario = function() {
     return Models.Usuario.findAll({
         order: [
@@ -63,7 +63,7 @@ var findAllUsuario = function() {
         ],
     });
 };
-
+/*consulta los datos de la tabla usuario filtrados por usuariocedula*/
 var findAllUsuarioCedula = function(ced_usuario) {
     return Models.Usuario.find({
         where: {
@@ -71,7 +71,7 @@ var findAllUsuarioCedula = function(ced_usuario) {
         }
     });
 };
-
+/*consulta un dato de la tabla usuario en especifico*/
 var findByIdUsuario = function(id_usuario) {
     return Models.Usuario.find({
         where: {
@@ -79,7 +79,7 @@ var findByIdUsuario = function(id_usuario) {
         }
     });
 };
-
+/*modificar un dato de la tabla usuario*/
 var updateUsuario = function(usuario, id_usuario, callback) {
     return Models.Usuario.find({
             where: {
@@ -125,25 +125,26 @@ var updateUsuario = function(usuario, id_usuario, callback) {
         });
 }
 
+/*Insertar un dato en la tabla usuario*/
 var insertUsuario = function(usuario) {
-    return Models.Usuario.create({
-        ced_usuario: usuario.ced_usuario,
-        nom_usuario: usuario.nom_usuario,
-        id_lugar: usuario.id_lugar,
-        id_mesa: usuario.id_mesa,
-        id_barrio: usuario.id_barrio,
-        login: usuario.login,
-        contrasena: usuario.contrasena,
-        id_tipo_usuario: usuario.id_tipo_usuario,
-        tel_usuario: usuario.tel_usuario,
-        activo: usuario.activo,
-        id_comunaB: usuario.id_comunaB,
-        id_comunaL: usuario.id_comunaL,
-        municipio: usuario.municipio,
-        departamento: usuario.departamento,
-    });
-}
-
+        return Models.Usuario.create({
+            ced_usuario: usuario.ced_usuario,
+            nom_usuario: usuario.nom_usuario,
+            id_lugar: usuario.id_lugar,
+            id_mesa: usuario.id_mesa,
+            id_barrio: usuario.id_barrio,
+            login: usuario.login,
+            contrasena: usuario.contrasena,
+            id_tipo_usuario: usuario.id_tipo_usuario,
+            tel_usuario: usuario.tel_usuario,
+            activo: usuario.activo,
+            id_comunaB: usuario.id_comunaB,
+            id_comunaL: usuario.id_comunaL,
+            municipio: usuario.municipio,
+            departamento: usuario.departamento,
+        });
+    }
+    /*eliminar un dato en la tabla usuario*/
 var deleteByIdUsuario = function(id_usuario) {
     return Models.Usuario.destroy({
         where: {

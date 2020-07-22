@@ -1,6 +1,9 @@
 var Models = require("../models/index");
 var sequelize = Models.sequelize;
 
+
+/*Insertar un dato en la tabla barrio*/
+
 var insertBarrio = function(barrio) {
     return Models.Barrio.create({
         nom_barrio: barrio.nom_barrio,
@@ -11,6 +14,7 @@ var insertBarrio = function(barrio) {
     });
 }
 
+/*consultar todos los datos de la tabla barrio ordenados por nombre*/
 var findAllBarrio = function() {
     return Models.Barrio.findAll({
         order: [
@@ -19,7 +23,7 @@ var findAllBarrio = function() {
     });
 };
 
-
+/*modificar un dato de la tabla barrio*/
 var updateBarrio = function(barrio, id_barrio, callback) {
     return Models.Barrio.find({
             where: {
@@ -56,6 +60,7 @@ var updateBarrio = function(barrio, id_barrio, callback) {
         });
 };
 
+/*eliminar un dato de la tabla barrio*/
 var deleteByIdBarrio = function(id_barrio) {
     return Models.Barrio.destroy({
         where: {
@@ -64,6 +69,7 @@ var deleteByIdBarrio = function(id_barrio) {
     });
 };
 
+/*consulta los datos de la tabla barrio filtrados por comuna*/
 var findAllBarrioComuna = function(id_comunaB) {
     return Models.Barrio.findAll({
         where: {
@@ -75,6 +81,7 @@ var findAllBarrioComuna = function(id_comunaB) {
     });
 };
 
+/*consulta un dato de la tabla barrio en especifico*/
 var findByIdBarrio = function(id_barrio) {
     return Models.Barrio.find({
         where: {
