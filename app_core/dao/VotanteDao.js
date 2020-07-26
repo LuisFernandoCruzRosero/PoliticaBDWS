@@ -4,56 +4,67 @@ var sequelize = Models.sequelize;
 var findAllVotante = function() {
     return Models.Votante.findAll({
         order: [
-            ['nom_vot', 'ASC']
+            ['nom_votante', 'ASC']
         ],
     });
 };
 
-var findAllVotanteCedula = function(ced_vot) {
-    return Models.Votante.findAll({
+var findByIVotanteCedula = function(ced_votante) {
+    return Models.Votante.find({
         where: {
-            ced_vot: ced_vot
+            ced_votante: ced_votante
         }
     });
 };
 
-var findAllVotanteById = function(id_votante) {
-    return Models.Votante.findAll({
+var findByIdVotante = function(id_votante) {
+    return Models.Votante.find({
         where: {
             id_votante: id_votante
         },
     });
 };
 
-var findAllVotanteOcupacion = function(ocupacion) {
+var findAllVotanteLugar = function(id_lugar) {
     return Models.Votante.findAll({
         where: {
-            ocupacion: ocupacion
+            id_lugar: id_lugar
         },
         order: [
-            ['nom_vot', 'ASC']
+            ['nom_votante', 'ASC']
         ],
     });
 };
 
-var findAllVotanteSector = function(id_sector) {
+var findAllVotanteBarrio = function(id_barrio) {
     return Models.Votante.findAll({
         where: {
-            id_sector: id_sector
+            id_barrio: id_barrio
         },
         order: [
-            ['nom_vot', 'ASC']
+            ['nom_votante', 'ASC']
         ],
     });
 };
 
-var findAllVotanteComuna = function(id_comuna) {
+var findAllVotanteComunaBarrio = function(id_comunaB) {
     return Models.Votante.findAll({
         where: {
-            id_comuna: id_comuna
+            id_comunaB: id_comunaB
         },
         order: [
-            ['nom_vot', 'ASC']
+            ['nom_votante', 'ASC']
+        ],
+    });
+};
+
+var findAllVotanteComunaLugar = function(id_comunaL) {
+    return Models.Votante.findAll({
+        where: {
+            id_comunaL: id_comunaL
+        },
+        order: [
+            ['nom_votante', 'ASC']
         ],
     });
 };
@@ -64,27 +75,19 @@ var findAllVotanteLider = function(id_lider) {
             id_lider: id_lider
         },
         order: [
-            ['nom_vot', 'ASC']
+            ['nom_votante', 'ASC']
         ],
     });
 };
 
-var findAllVotanteCoordinador = function(id_coordinador) {
+var findAllVotanteUsuario = function(id_usuario) {
     return Models.Votante.findAll({
         where: {
-            id_coordinador: id_coordinador
+            id_usuario: id_usuario
         },
         order: [
-            ['nom_vot', 'ASC']
+            ['nom_votante', 'ASC']
         ],
-    });
-};
-
-var findById = function(id_votante) {
-    return Models.Votante.find({
-        where: {
-            id_votante: id_votante
-        }
     });
 };
 
@@ -97,22 +100,22 @@ var updateVotante = function(votante, id_votante, callback) {
         .then(function(resultado) {
             if (resultado) {
                 resultado.updateAttributes({
-                        ced_vot: votante.ced_vot,
-                        nom_vot: votante.nom_vot,
-                        bar_vot: votante.bar_vot,
-                        tel_vot: votante.tel_vot,
-                        ocupacion: votante.ocupacion,
-                        id_comuna: votante.id_comuna,
-                        id_sector: votante.id_sector,
-                        id_coordinador: votante.id_coordinador,
+                        ced_votante: votante.ced_votante,
                         id_lider: votante.id_lider,
-                        mesa: votante.mesa,
+                        nom_votante: votante.nom_votante,
+                        nom_votante: votante.nom_votante,
+                        id_mesa: votante.id_mesa,
+                        id_usuario: votante.id_usuario,
+                        id_barrio: votante.id_barrio,
+                        tel_votante: votante.tel_votante,
+                        id_comunaB: votante.id_comunaB,
+                        id_comunaL: votante.id_comunaL,
+                        activo: votante.activo,
                         municipio: votante.municipio,
                         departamento: votante.departamento,
-                        puesto: votante.puesto,
                     })
-                    .then(function(usuarioActualizada) {
-                        Models.Votante.findById(usuarioActualizada.id_votante)
+                    .then(function(votanteActualizada) {
+                        Models.Votante.findById(votanteActualizada.id_votante)
                             .then(function(resultadoFinal) {
                                 callback(resultadoFinal, null);
                             })
@@ -132,25 +135,24 @@ var updateVotante = function(votante, id_votante, callback) {
         });
 }
 
-var crear = function(votante) {
+var insertVotante = function(votante) {
     return Models.Votante.create({
-        ced_vot: votante.ced_vot,
-        nom_vot: votante.nom_vot,
-        bar_vot: votante.bar_vot,
-        tel_vot: votante.tel_vot,
-        ocupacion: votante.ocupacion,
-        id_comuna: votante.id_comuna,
-        id_sector: votante.id_sector,
-        id_coordinador: votante.id_coordinador,
+        ced_votante: votante.ced_votante,
         id_lider: votante.id_lider,
-        mesa: votante.mesa,
+        nom_votante: votante.nom_votante,
+        id_mesa: votante.id_mesa,
+        id_usuario: votante.id_usuario,
+        id_barrio: votante.id_barrio,
+        tel_votante: votante.tel_votante,
+        id_comunaB: votante.id_comunaB,
+        id_comunaL: votante.id_comunaL,
+        activo: votante.activo,
         municipio: votante.municipio,
         departamento: votante.departamento,
-        puesto: votante.puesto,
     });
 }
 
-var deleteById = function(id_votante) {
+var deleteByIdVotante = function(id_votante) {
     return Models.Votante.destroy({
         where: {
             id_votante: id_votante
@@ -160,13 +162,13 @@ var deleteById = function(id_votante) {
 
 module.exports.findAllVotante = findAllVotante;
 module.exports.updateVotante = updateVotante;
-module.exports.findById = findById;
-module.exports.crear = crear;
-module.exports.deleteById = deleteById;
-module.exports.findAllVotanteComuna = findAllVotanteComuna;
-module.exports.findAllVotanteSector = findAllVotanteSector;
+module.exports.findByIdVotante = findByIdVotante;
+module.exports.insertVotante = insertVotante;
+module.exports.deleteByIdVotante = deleteByIdVotante;
+module.exports.findAllVotanteComunaBarrio = findAllVotanteComunaBarrio;
+module.exports.findAllVotanteComunaLugar = findAllVotanteComunaLugar;
+module.exports.findAllVotanteBarrio = findAllVotanteBarrio;
+module.exports.findAllVotanteLugar = findAllVotanteLugar;
 module.exports.findAllVotanteLider = findAllVotanteLider;
-module.exports.findAllVotanteCoordinador = findAllVotanteCoordinador;
-module.exports.findAllVotanteById = findAllVotanteById;
-module.exports.findAllVotanteOcupacion = findAllVotanteOcupacion
-module.exports.findAllVotanteCedula = findAllVotanteCedula;
+module.exports.findAllVotanteUsuario = findAllVotanteUsuario;
+module.exports.findByIVotanteCedula = findByIVotanteCedula;

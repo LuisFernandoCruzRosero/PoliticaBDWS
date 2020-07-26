@@ -4,78 +4,75 @@ var sequelize = Models.sequelize;
 var findAllLider = function() {
     return Models.Lider.findAll({
         order: [
-            ['nom_lid', 'ASC']
+            ['nom_lider', 'ASC']
         ],
     });
 };
 
-var findAllLiderById = function(id_lider) {
+var findAllLiderCedula = function(ced_lider) {
+    return Models.Lider.find({
+        where: {
+            ced_lider: ced_lider
+        }
+    });
+};
+
+var findAllLiderLugar = function(id_lugar) {
     return Models.Lider.findAll({
         where: {
-            id_lider: id_lider
+            id_lugar: id_lugar
         },
         order: [
-            ['nom_lid', 'ASC']
+            ['nom_lider', 'ASC']
         ],
     });
 };
 
-var findAllLiderCedula = function(ced_lid) {
+var findAllLiderBarrio = function(id_barrio) {
     return Models.Lider.findAll({
         where: {
-            ced_lid: ced_lid
+            id_barrio: id_barrio
         },
         order: [
-            ['nom_lid', 'ASC']
+            ['nom_lider', 'ASC']
         ],
     });
 };
 
-var findAllLiderOcupacion = function(ocupacion) {
+var findAllLiderComunaLugar = function(id_comunaL) {
     return Models.Lider.findAll({
         where: {
-            ocupacion: ocupacion
+            id_comunaL: id_comunaL
         },
         order: [
-            ['nom_lid', 'ASC']
+            ['nom_lider', 'ASC']
         ],
     });
 };
 
-var findAllLiderSector = function(id_sector) {
+var findAllLiderComunaBarrio = function(id_comunaB) {
     return Models.Lider.findAll({
         where: {
-            id_sector: id_sector
+            id_comunaB: id_comunaB
         },
         order: [
-            ['nom_lid', 'ASC']
+            ['nom_lider', 'ASC']
         ],
     });
 };
 
-var findAllLiderComuna = function(id_comuna) {
+var findAllLiderUsuario = function(id_usuario) {
     return Models.Lider.findAll({
         where: {
-            id_comuna: id_comuna
+            id_usuario: id_usuario
         },
         order: [
-            ['nom_lid', 'ASC']
+            ['nom_lider', 'ASC']
         ],
     });
 };
 
-var findAllLiderCoordinador = function(id_coordinador) {
-    return Models.Lider.findAll({
-        where: {
-            id_coordinador: id_coordinador
-        },
-        order: [
-            ['nom_lid', 'ASC']
-        ],
-    });
-};
-
-var findById = function(id_lider) {
+var findByIdLider = function(id_lider) {
     return Models.Lider.find({
         where: {
             id_lider: id_lider
@@ -92,21 +89,21 @@ var updateLider = function(lider, id_lider, callback) {
         .then(function(resultado) {
             if (resultado) {
                 resultado.updateAttributes({
-                        ced_lid: lider.ced_lid,
-                        nom_lid: lider.nom_lid,
-                        bar_lid: lider.bar_lid,
-                        tel_lid: lider.tel_lid,
-                        ocupacion: lider.ocupacion,
-                        id_comuna: lider.id_comuna,
-                        id_sector: lider.id_sector,
-                        id_coordinador: lider.id_coordinador,
-                        mesa: lider.mesa,
+                        ced_lider: lider.ced_lider,
+                        id_lugar: lider.id_lugar,
+                        id_mesa: lider.id_mesa,
+                        id_barrio: lider.id_barrio,
+                        nom_lider: lider.nom_lider,
+                        id_usuario: lider.id_usuario,
+                        tel_lider: lider.tel_lider,
+                        id_comunaL: lider.id_comunaL,
+                        id_comunaB: lider.id_comunaB,
+                        activo: lider.activo,
                         municipio: lider.municipio,
                         departamento: lider.departamento,
-                        puesto: lider.puesto,
                     })
-                    .then(function(usuarioActualizada) {
-                        Models.Lider.findById(usuarioActualizada.id_lider)
+                    .then(function(liderActualizada) {
+                        Models.Lider.findById(liderActualizada.id_lider)
                             .then(function(resultadoFinal) {
                                 callback(resultadoFinal, null);
                             })
@@ -126,24 +123,24 @@ var updateLider = function(lider, id_lider, callback) {
         });
 }
 
-var crear = function(lider) {
+var insertLider = function(lider) {
     return Models.Lider.create({
-        ced_lid: lider.ced_lid,
-        nom_lid: lider.nom_lid,
-        bar_lid: lider.bar_lid,
-        tel_lid: lider.tel_lid,
-        ocupacion: lider.ocupacion,
-        id_comuna: lider.id_comuna,
-        id_sector: lider.id_sector,
-        id_coordinador: lider.id_coordinador,
-        mesa: lider.mesa,
+        ced_lider: lider.ced_lider,
+        id_lugar: lider.id_lugar,
+        id_mesa: lider.id_mesa,
+        id_barrio: lider.id_barrio,
+        nom_lider: lider.nom_lider,
+        id_usuario: lider.id_usuario,
+        tel_lider: lider.tel_lider,
+        id_comunaL: lider.id_comunaL,
+        id_comunaB: lider.id_comunaB,
+        activo: lider.activo,
         municipio: lider.municipio,
         departamento: lider.departamento,
-        puesto: lider.puesto,
     });
 }
 
-var deleteById = function(id_lider) {
+var deleteByIdLider = function(id_lider) {
     return Models.Lider.destroy({
         where: {
             id_lider: id_lider
@@ -153,12 +150,12 @@ var deleteById = function(id_lider) {
 
 module.exports.findAllLider = findAllLider;
 module.exports.updateLider = updateLider;
-module.exports.findById = findById;
-module.exports.crear = crear;
-module.exports.deleteById = deleteById;
-module.exports.findAllLiderComuna = findAllLiderComuna;
-module.exports.findAllLiderCoordinador = findAllLiderCoordinador;
-module.exports.findAllLiderSector = findAllLiderSector;
-module.exports.findAllLiderById = findAllLiderById;
-module.exports.findAllLiderOcupacion = findAllLiderOcupacion;
+module.exports.findByIdLider = findByIdLider;
+module.exports.insertLider = insertLider;
+module.exports.deleteByIdLider = deleteByIdLider;
+module.exports.findAllLiderComunaBarrio = findAllLiderComunaBarrio;
+module.exports.findAllLiderComunaLugar = findAllLiderComunaLugar;
+module.exports.findAllLiderUsuario = findAllLiderUsuario;
+module.exports.findAllLiderLugar = findAllLiderLugar;
+module.exports.findAllLiderBarrio = findAllLiderBarrio;
 module.exports.findAllLiderCedula = findAllLiderCedula;

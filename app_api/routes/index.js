@@ -10,12 +10,9 @@ var HistorialController = require("../controllers/HistorialController");
 var ContabilidadController = require("../controllers/ContabilidadController");
 var RegistraduriaController = require("../controllers/RegistraduriaController");
 var UsuarioController = require("../controllers/UsuarioController");
-/*var UsuarioController = require("../controllers/UsuarioController");
-var SectorController = require("../controllers/SectorController");
-var CoordinadorController = require("../controllers/CoordinadorController");
+var DigitadorController = require("../controllers/DigitadorController");
 var LiderControllaer = require("../controllers/LiderControllaer");
 var VotanteController = require("../controllers/VotanteController");
-var PerfilProfesionalController = require("../controllers/PerfilProfesionalController");*/
 
 
 
@@ -137,95 +134,47 @@ router.put("/usuario/:id_usuario", UsuarioController.updateUsuario); //Consulta 
 router.delete("/usuario/:id_usuario", UsuarioController.deleteByIdUsuario); //Consulta  contabilidad por fecha
 //*****************************************************************************************
 
-//*************************************************************************************** */
-//******************************** */Usuario **********************************************
-/*router.get("/usuario", UsuarioController.findAllUsuario);
-router.get("/usuarioOcupacion/:ocupacion", UsuarioController.findAllUsuarioOcupacion);
-router.put('/usuario/:id_usuario', UsuarioController.updateUsuario);
-router.get('/usuario/:id_usuario', UsuarioController.findById);
-router.post("/usuario", UsuarioController.crear);
-router.delete("/usuario/:id_usuario", UsuarioController.deleteById);
-router.get("/digitador", UsuarioController.findAllDigitador);
-router.get("/digitadorCedula/:ced_usu", UsuarioController.findAllDigitadorCedula);
-router.get("/digitadorById/:id_usuario", UsuarioController.findAllDigitadorById);*/
-//*************************************************************************************** */
+
+//*****************************************************************************************
+//******CRUD de Digitador******
+router.post("/digitador", DigitadorController.insertDigitador); //Inserta un digitador nuevo
+router.get("/digitador", DigitadorController.findAllDigitador); //Consulta al digitador
+router.get("/digitador/:id_digitador", DigitadorController.findByIdDigitador); //Consulta al digitador
+router.get("/digitadorCedula/:ced_digitador", DigitadorController.findByIdDigitadorCedula); //Consulta al digitador por cedula
+router.put("/digitador/:id_digitador", DigitadorController.updateDigitador); //Actualiza un digitador
+router.delete("/digitador/:id_digitador", DigitadorController.deleteByIdDigitador); //Borra in digitador  
+//*****************************************************************************************
 
 
-//*************************************************************************************** */
-//******************************** */Sector **********************************************
-/*router.get("/sector", SectorController.findAllSector);
-router.put('/sector/:id_sector', SectorController.updateSector);
-router.get('/sector/:id_sector', SectorController.findById);
-router.post("/sector", SectorController.crear);
-router.delete("/sector/:id_sector", SectorController.deleteById);
-router.get("/sectorPorComuna/:id_comuna", SectorController.buscarPorComuna);
-router.get("/sectorPorNombre/:id_sector", SectorController.buscarPorIdSector);*/
-//*************************************************************************************** */
+//*****************************************************************************************
+//******CRUD de Lider******
+router.post("/lider", LiderControllaer.insertLider); //Inserta un digitador nuevo
+router.get("/lider", LiderControllaer.findAllLider); //Consulta al digitador
+router.get("/lider/:id_lider", LiderControllaer.findByIdLider); //Consulta al digitador
+router.get("/liderCedula/:ced_lider", LiderControllaer.findAllLiderCedula); //Consulta al digitador por cedula
+router.get("/liderComunaBarrio/:id_comunaB", LiderControllaer.findAllLiderComunaBarrio); //Consulta al digitador por cedula
+router.get("/liderComunaLugar/:id_comunaL", LiderControllaer.findAllLiderComunaLugar); //Consulta al digitador por cedula
+router.get("/liderUsuario/:id_usuario", LiderControllaer.findAllLiderUsuario); //Consulta al digitador por cedula
+router.get("/liderLugar/:id_lugar", LiderControllaer.findAllLiderLugar); //Consulta al digitador por cedula
+router.get("/liderBarrio/:id_barrio", LiderControllaer.findAllLiderBarrio); //Consulta al digitador por cedula
+router.put("/lider/:id_lider", LiderControllaer.updateLider); //Actualiza un digitador
+router.delete("/lider/:id_lider", LiderControllaer.deleteByIdLider); //Borra in digitador  
+//*****************************************************************************************
 
-
-//*************************************************************************************** */
-//******************************** */Coordinador **********************************************
-/*router.get("/coordinador", CoordinadorController.findAllCoordinador);
-router.get("/coordinadorOcupacion/:ocupacion", CoordinadorController.findAllCoordinadorOcupacion);
-router.get("/coordinadorCedula/:ced_coo", CoordinadorController.findAllCoordinadorCedula);
-router.put('/coordinador/:id_coordinador', CoordinadorController.updateCoordinador);
-router.get('/coordinador/:id_coordinador', CoordinadorController.findById);
-router.get('/coordinadorById/:id_coordinador', CoordinadorController.findAllCoordinadorById);
-router.get('/coordinadorComuna/:id_comuna', CoordinadorController.findAllCoordinadorComuna);
-router.get('/coordinadorSector/:id_sector', CoordinadorController.findAllCoordinadorSector);
-router.post("/coordinador", CoordinadorController.crear);
-router.delete("/coordinador/:id_coordinador", CoordinadorController.deleteById);*/
-//*************************************************************************************** */
-
-//*************************************************************************************** */
-//******************************** */Lider **********************************************
-/*router.get("/lider", LiderControllaer.findAllLider);
-router.get("/liderOcupacion/:ocupacion", LiderControllaer.findAllLiderOcupacion);
-router.put('/lider/:id_lider', LiderControllaer.updateLider);
-router.get('/lider/:id_lider', LiderControllaer.findById);
-router.get('/liderCoordinador/:id_coordinador', LiderControllaer.findAllLiderCoordinador);
-router.get('/liderComuna/:id_comuna', LiderControllaer.findAllLiderComuna);
-router.get('/liderSector/:id_sector', LiderControllaer.findAllLiderSector);
-router.post("/lider", LiderControllaer.crear);
-router.delete("/lider/:id_lider", LiderControllaer.deleteById);
-router.get("/liderById/:id_lider", LiderControllaer.findAllLiderById);
-router.get("/liderCedula/:ced_lid", LiderControllaer.findAllLiderCedula);*/
-//*************************************************************************************** */
-
-//*************************************************************************************** */
-//******************************** */Votante **********************************************
-/*router.get("/votante", VotanteController.findAllVotante);
-router.get("/votanteCedula/:ced_vot", VotanteController.findAllVotanteCedula);
-router.get("/votanteOcupacion/:ocupacion", VotanteController.findAllVotanteOcupacion);
-router.put('/votante/:id_votante', VotanteController.updateVotante);
-router.get('/votante/:id_votante', VotanteController.findById);
-router.get('/votanteCoordinador/:id_coordinador', VotanteController.findAllVotanteCoordinador);
-router.get('/votanteLider/:id_lider', VotanteController.findAllVotanteLider);
-router.get('/votanteById/:id_votante', VotanteController.findAllVotanteById);
-router.get('/votanteComuna/:id_comuna', VotanteController.findAllVotanteComuna);
-router.get('/votanteSector/:id_sector', VotanteController.findAllVotanteSector);
-router.post("/votante", VotanteController.crear);
-router.delete("/votante/:id_votante", VotanteController.deleteById);*/
-//*************************************************************************************** */
-
-
-//*************************************************************************************** */
-//******************************** */Barrio **********************************************
-/*router.get("/barrio", BarrioController.findAllBarrio);
-router.put('/barrio/:id_barrio', BarrioController.updateBarrio);
-router.get('/barrio/:id_barrio', BarrioController.findById);
-router.get('/barrioComuna/:id_comuna', BarrioController.findAllBarrioComuna);
-router.post("/barrio", BarrioController.crear);
-router.delete("/barrio/:id_barrio", BarrioController.deleteById);*/
-//*************************************************************************************** */
+//*****************************************************************************************
+//******CRUD de votante******
+router.post("/votante", VotanteController.insertVotante); //Inserta un digitador nuevo
+router.get("/votante", VotanteController.findAllVotante); //Consulta al digitador
+router.get("/votante/:id_votnte", VotanteController.findByIdVotante); //Consulta al digitador
+router.get("/votanteCedula/:ced_votnte", VotanteController.findByIVotanteCedula); //Consulta al digitador por cedula
+router.get("/votanteComunaBarrio/:id_comunaB", VotanteController.findAllVotanteComunaBarrio); //Consulta al digitador por cedula
+router.get("/votanteComunaLugar/:id_comunaL", VotanteController.findAllVotanteComunaLugar); //Consulta al digitador por cedula
+router.get("/votanteUsuario/:id_usuario", VotanteController.findAllVotanteUsuario); //Consulta al digitador por cedula
+router.get("/votanteLider/:id_lider", VotanteController.findAllVotanteLider); //Consulta al digitador por cedula
+router.get("/votanteLugar/:id_lugar", VotanteController.findAllVotanteLugar); //Consulta al digitador por cedula
+router.get("/votanteBarrio/:id_barrio", VotanteController.findAllVotanteBarrio); //Consulta al digitador por cedula
+router.put("/votante/:id_votnte", VotanteController.updateVotante); //Actualiza un digitador
+router.delete("/votante/:id_votnte", VotanteController.deleteByIdVotante); //Borra in digitador  
+//*****************************************************************************************
 
 module.exports = router;
-
-/*
- * RUTAS DE USUARIOS
- */
-/*router.get("/usuario", UsuarioController.findAll);
-router.get("/usuario/:id", UsuarioController.findById);
-router.post("/usuario", UsuarioController.addUsuario);
-router.delete("/usuario/:id", UsuarioController.deleteUsuario);
-router.put('/usuario/:id', UsuarioController.update);*/

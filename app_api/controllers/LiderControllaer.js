@@ -3,8 +3,8 @@ var Respuesta = require("../../app_core/helpers/respuesta");
 
 
 var findAllLider = function(req, res) {
-    LiderDao.findAllLider().then(function(usuario) {
-        Respuesta.sendJsonResponse(res, 200, usuario);
+    LiderDao.findAllLider().then(function(lider) {
+        Respuesta.sendJsonResponse(res, 200, lider);
     }).catch(function(error) {
         Respuesta.sendJsonResponse(res, 500, error)
     });
@@ -13,18 +13,18 @@ var findAllLider = function(req, res) {
 var updateLider = function(req, res) {
     var id_lider = req.params.id_lider;
     var actualizar = {
-        ced_lid: req.body.ced_lid,
-        nom_lid: req.body.nom_lid,
-        bar_lid: req.body.bar_lid,
-        tel_lid: req.body.tel_lid,
-        ocupacion: req.body.ocupacion,
-        id_comuna: req.body.id_comuna,
-        id_sector: req.body.id_sector,
-        id_coordinador: req.body.id_coordinador,
-        mesa: req.body.mesa,
+        ced_lider: req.body.ced_lider,
+        id_lugar: req.body.id_lugar,
+        id_mesa: req.body.id_mesa,
+        id_barrio: req.body.id_barrio,
+        nom_lider: req.body.nom_lider,
+        id_usuario: req.body.id_usuario,
+        tel_lider: req.body.tel_lider,
+        id_comunaL: req.body.id_comunaL,
+        id_comunaB: req.body.id_comunaB,
+        activo: req.body.activo,
         municipio: req.body.municipio,
         departamento: req.body.departamento,
-        puesto: req.body.puesto,
     };
     LiderDao.updateLider(actualizar, id_lider, function(variable, err) {
             if (err) {
@@ -40,8 +40,8 @@ var updateLider = function(req, res) {
 
 }
 
-var findById = function(req, res) {
-    LiderDao.findById(req.params.id_lider).then(function(usuario) {
+var findByIdLider = function(req, res) {
+    LiderDao.findByIdLider(req.params.id_lider).then(function(usuario) {
         Respuesta.sendJsonResponse(res, 200, usuario);
     }).catch(function(error) {
         Respuesta.sendJsonResponse(res, 500, { "error": 'se ha producido un error en la consulta' });
@@ -49,31 +49,31 @@ var findById = function(req, res) {
 };
 
 
-var crear = function(req, res) {
+var insertLider = function(req, res) {
     var lider = {
-        ced_lid: req.body.ced_lid,
-        nom_lid: req.body.nom_lid,
-        bar_lid: req.body.bar_lid,
-        tel_lid: req.body.tel_lid,
-        ocupacion: req.body.ocupacion,
-        id_comuna: req.body.id_comuna,
-        id_sector: req.body.id_sector,
-        id_coordinador: req.body.id_coordinador,
-        mesa: req.body.mesa,
+        ced_lider: req.body.ced_lider,
+        id_lugar: req.body.id_lugar,
+        id_mesa: req.body.id_mesa,
+        id_barrio: req.body.id_barrio,
+        nom_lider: req.body.nom_lider,
+        id_usuario: req.body.id_usuario,
+        tel_lider: req.body.tel_lider,
+        id_comunaL: req.body.id_comunaL,
+        id_comunaB: req.body.id_comunaB,
+        activo: req.body.activo,
         municipio: req.body.municipio,
         departamento: req.body.departamento,
-        puesto: req.body.puesto,
     };
-    LiderDao.crear(lider).then(function(lider) {
+    LiderDao.insertLider(lider).then(function(lider) {
         Respuesta.sendJsonResponse(res, 200, lider)
     }).catch(function(error) {
         Respuesta.sendJsonResponse(res, 500, error);
     });
 }
 
-var deleteById = function(req, res) {
-    LiderDao.deleteById(req.params.id_lider).then(function(coordinador) {
-        if (coordinador == 1) {
+var deleteByIdLider = function(req, res) {
+    LiderDao.deleteByIdLider(req.params.id_lider).then(function(lider) {
+        if (lider == 1) {
             Respuesta.sendJsonResponse(res, 200, { "mensaje": "registro eliminado" });
         } else {
             Respuesta.sendJsonResponse(res, 404, { "mensaje": "registro no encontrado" });
@@ -83,50 +83,50 @@ var deleteById = function(req, res) {
     });
 };
 
-var findAllLiderComuna = function(req, res) {
-    LiderDao.findAllLiderComuna(req.params.id_comuna).then(function(usuario) {
-        Respuesta.sendJsonResponse(res, 200, usuario);
+var findAllLiderComunaBarrio = function(req, res) {
+    LiderDao.findAllLiderComunaBarrio(req.params.id_comunaB).then(function(lider) {
+        Respuesta.sendJsonResponse(res, 200, lider);
+    }).catch(function(error) {
+        Respuesta.sendJsonResponse(res, 500, error)
+    });
+};
+
+var findAllLiderComunaLugar = function(req, res) {
+    LiderDao.findAllLiderComunaLugar(req.params.id_comunaL).then(function(lider) {
+        Respuesta.sendJsonResponse(res, 200, lider);
     }).catch(function(error) {
         Respuesta.sendJsonResponse(res, 500, error)
     });
 };
 
 
-var findAllLiderSector = function(req, res) {
-    LiderDao.findAllLiderSector(req.params.id_sector).then(function(usuario) {
-        Respuesta.sendJsonResponse(res, 200, usuario);
+var findAllLiderLugar = function(req, res) {
+    LiderDao.findAllLiderLugar(req.params.id_lugar).then(function(lider) {
+        Respuesta.sendJsonResponse(res, 200, lider);
     }).catch(function(error) {
         Respuesta.sendJsonResponse(res, 500, error)
     });
 };
 
-var findAllLiderCoordinador = function(req, res) {
-    LiderDao.findAllLiderCoordinador(req.params.id_coordinador).then(function(usuario) {
-        Respuesta.sendJsonResponse(res, 200, usuario);
+var findAllLiderBarrio = function(req, res) {
+    LiderDao.findAllLiderBarrio(req.params.id_barrio).then(function(lider) {
+        Respuesta.sendJsonResponse(res, 200, lider);
     }).catch(function(error) {
         Respuesta.sendJsonResponse(res, 500, error)
     });
 };
 
-var findAllLiderOcupacion = function(req, res) {
-    LiderDao.findAllLiderOcupacion(req.params.ocupacion).then(function(usuario) {
-        Respuesta.sendJsonResponse(res, 200, usuario);
-    }).catch(function(error) {
-        Respuesta.sendJsonResponse(res, 500, error)
-    });
-};
-
-var findAllLiderById = function(req, res) {
-    LiderDao.findAllLiderById(req.params.id_lider).then(function(usuario) {
-        Respuesta.sendJsonResponse(res, 200, usuario);
+var findAllLiderUsuario = function(req, res) {
+    LiderDao.findAllLiderUsuario(req.params.id_usuario).then(function(lider) {
+        Respuesta.sendJsonResponse(res, 200, lider);
     }).catch(function(error) {
         Respuesta.sendJsonResponse(res, 500, error)
     });
 };
 
 var findAllLiderCedula = function(req, res) {
-    LiderDao.findAllLiderCedula(req.params.ced_lid).then(function(usuario) {
-        Respuesta.sendJsonResponse(res, 200, usuario);
+    LiderDao.findAllLiderCedula(req.params.ced_lider).then(function(lider) {
+        Respuesta.sendJsonResponse(res, 200, lider);
     }).catch(function(error) {
         Respuesta.sendJsonResponse(res, 500, error)
     });
@@ -134,12 +134,12 @@ var findAllLiderCedula = function(req, res) {
 
 module.exports.findAllLider = findAllLider;
 module.exports.updateLider = updateLider;
-module.exports.findById = findById;
-module.exports.crear = crear;
-module.exports.deleteById = deleteById;
-module.exports.findAllLiderCoordinador = findAllLiderCoordinador;
-module.exports.findAllLiderComuna = findAllLiderComuna;
-module.exports.findAllLiderSector = findAllLiderSector;
-module.exports.findAllLiderById = findAllLiderById;
-module.exports.findAllLiderOcupacion = findAllLiderOcupacion;
+module.exports.findByIdLider = findByIdLider;
+module.exports.insertLider = insertLider;
+module.exports.deleteByIdLider = deleteByIdLider;
+module.exports.findAllLiderComunaBarrio = findAllLiderComunaBarrio;
+module.exports.findAllLiderComunaLugar = findAllLiderComunaLugar;
+module.exports.findAllLiderUsuario = findAllLiderUsuario;
+module.exports.findAllLiderLugar = findAllLiderLugar;
+module.exports.findAllLiderBarrio = findAllLiderBarrio;
 module.exports.findAllLiderCedula = findAllLiderCedula;
