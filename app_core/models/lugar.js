@@ -3,7 +3,7 @@ module.exports = function(sequelize,
     DataTypes) {
     return sequelize.define('Lugar',
 
-        {
+        { /*campos de la tabla */
             id_lugar: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
@@ -33,12 +33,14 @@ module.exports = function(sequelize,
 
         },
 
-        {
+        { /* Nombre de la tabla */
             tableName: 'lugar',
             timestamps: false,
             underscored: true,
             freezeTableName: true,
+            /* nombre del esquema */
             schema: 'lugares',
+            /* Funcion de llaves foraneas */
             classMethods: {
                 associate: function(models) {
                     models.Lugar.belongsTo(models.Comuna,

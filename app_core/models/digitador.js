@@ -1,9 +1,9 @@
-/*modelo utilizado para BD tabla DIGITADOR:2*/
+/*modelo utilizado para BD tabla DIGITADOR*/
 module.exports = function(sequelize,
     DataTypes) {
     return sequelize.define('Digitador',
 
-        {
+        { /*campos de la tabla */
             id_digitador: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
@@ -66,11 +66,14 @@ module.exports = function(sequelize,
         },
 
         {
+            /* Nombre de la tabla */
             tableName: 'digitador',
             timestamps: false,
             underscored: true,
             freezeTableName: true,
+            /* nombre del esquema */
             schema: 'usuarios',
+            /* Funcion de llaves foraneas */
             classMethods: {
                 associate: function(models) {
                     models.Digitador.belongsTo(models.Comuna,

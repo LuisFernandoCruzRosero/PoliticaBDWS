@@ -47,11 +47,11 @@ var updateContabilidad = function(req, res) {
     /* llama a la funcion en el dao y le envia el objeto contabilidad y el parametro id_contabilidad*/
     ContabilidadDao.updateContabilidad(actualizar, id_contabilidad, function(variable, err) {
             if (err) {
-                /*si no hay error en el modificar enviar respuesta exitosa*/
+                /*si hay error en el modificar enviar respuesta error*/
                 Respuesta.sendJsonResponse(res, 500, err);
             }
             if (variable) {
-                /*si hay error en el modificar enviar respuesta error*/
+                /*si no hay error en el modificar enviar respuesta exitosa*/
                 Respuesta.sendJsonResponse(res, 200, variable);
             }
         })

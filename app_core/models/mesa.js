@@ -1,9 +1,9 @@
-/*modelo utilizado para BD tabla MESA:2*/
+/*modelo utilizado para BD tabla MESA*/
 module.exports = function(sequelize,
     DataTypes) {
     return sequelize.define('Mesa',
 
-        {
+        { /*campos de la tabla */
             id_mesa: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
@@ -18,11 +18,14 @@ module.exports = function(sequelize,
         },
 
         {
+            /* Nombre de la tabla */
             tableName: 'mesa',
             timestamps: false,
             underscored: true,
             freezeTableName: true,
+            /* nombre del esquema */
             schema: 'lugares',
+            /* Funcion de llaves foraneas */
             classMethods: {
                 associate: function(models) {
                     models.Mesa.hasMany(models.Digitador,

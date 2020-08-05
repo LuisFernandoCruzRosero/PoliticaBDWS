@@ -49,16 +49,16 @@ var updateBarrio = function(req, res) {
     /* llama a la funcion en el dao y le envia el objeto barrio y el parametro id_barrio*/
     BarrioDao.updateBarrio(actualizarBarrio, id_barrio, function(barrio, err) {
             if (err) {
-                /*si no hay error en el modificar enviar respuesta exitosa*/
+                /*si hay error en el modificar enviar respuesta error*/
                 Respuesta.sendJsonResponse(res, 500, err);
             }
             if (barrio) {
-                /*si hay error en el modificar enviar respuesta error*/
+                /*si no hay error en el modificar enviar respuesta exitosa*/
                 Respuesta.sendJsonResponse(res, 200, barrio);
             }
         })
         .catch(function(err) {
-            /*si no hay error en el modificar enviar respuesta exitosa*/
+            /*si hay error en el modificar enviar respuesta error*/
             Respuesta.sendJsonResponse(res, 500, err);
         });
 
