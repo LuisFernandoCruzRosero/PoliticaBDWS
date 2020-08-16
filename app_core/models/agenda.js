@@ -1,9 +1,9 @@
-/*jshintindent:2*/
+/* modelo utilizado para BD tabla AGENDA */
 module.exports = function(sequelize,
     DataTypes) {
     return sequelize.define('Agenda',
 
-        {
+        { /*campos de la tabla */
             id_agenda: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
@@ -34,11 +34,14 @@ module.exports = function(sequelize,
         },
 
         {
+            /* Nombre de la tabla */
             tableName: 'agenda',
             timestamps: false,
             underscored: true,
             freezeTableName: true,
+            /* nombre del esquema */
             schema: 'contabilidad',
+            /* Funcion de llaves foraneas */
             classMethods: {
                 associate: function(models) {
                     models.Agenda.belongsTo(models.Usuario,

@@ -1,9 +1,9 @@
-/*jshintindent:2*/
+/* modelo utilizado para BD tabla LugarMesa */
 module.exports = function(sequelize,
     DataTypes) {
     return sequelize.define('LugarMesa',
 
-        {
+        { /*campos de la tabla */
             id_lugar_mesa: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
@@ -22,11 +22,14 @@ module.exports = function(sequelize,
         },
 
         {
+            /* Nombre de la tabla */
             tableName: 'lugar_mesa',
             timestamps: false,
             underscored: true,
             freezeTableName: true,
+            /* nombre del esquema */
             schema: 'lugares',
+            /* Funcion de llaves foraneas */
             classMethods: {
                 associate: function(models) {
                     models.LugarMesa.belongsTo(models.Lugar,

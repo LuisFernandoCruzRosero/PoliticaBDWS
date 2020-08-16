@@ -40,16 +40,16 @@ var updateComuna = function(req, res) {
     /* llama a la funcion en el dao y le envia el objeto agenda y el parametro id_comuna*/
     ComunaDao.updateComuna(actualizarComuna, id_comuna, function(comuna, err) {
             if (err) {
-                /*si no hay error en el modificar enviar respuesta exitosa*/
+                /*si hay error en el modificar enviar respuesta error*/
                 Respuesta.sendJsonResponse(res, 500, err);
             }
             if (comuna) {
-                /*si hay error en el modificar enviar respuesta error*/
+                /*si no hay error en el modificar enviar respuesta exitosa*/
                 Respuesta.sendJsonResponse(res, 200, comuna);
             }
         })
         .catch(function(err) {
-            /*si no hay error en el modificar enviar respuesta exitosa*/
+            /*si hay error en el modificar enviar respuesta error*/
             Respuesta.sendJsonResponse(res, 500, err);
         });
 

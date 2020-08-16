@@ -1,9 +1,9 @@
-/*jshintindent:2*/
+/* modelo utilizado para BD tabla TipoUsuario */
 module.exports = function(sequelize,
     DataTypes) {
     return sequelize.define('TipoUsuario',
 
-        {
+        { /*campos de la tabla */
             id_tipo_usuario: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
@@ -18,11 +18,14 @@ module.exports = function(sequelize,
         },
 
         {
+            /* Nombre de la tabla */
             tableName: 'tipo_usuario',
             timestamps: false,
             underscored: true,
             freezeTableName: true,
+            /* nombre del esquema */
             schema: 'usuarios',
+            /* Funcion de llaves foraneas */
             classMethods: {
                 associate: function(models) {
                     models.TipoUsuario.hasMany(models.Digitador,
