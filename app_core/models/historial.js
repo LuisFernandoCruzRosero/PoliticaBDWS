@@ -1,4 +1,4 @@
-/*modelo utilizado para BD tabla HISTORIAL:2*/
+/*jshintindent:2*/
 module.exports = function(sequelize,
     DataTypes) {
     return sequelize.define('Historial',
@@ -16,7 +16,7 @@ module.exports = function(sequelize,
             },
             id_lugar: {
                 type: DataTypes.INTEGER,
-                allowNull: true
+                allowNull: true /* JARR */
             },
             total: {
                 type: DataTypes.STRING,
@@ -33,6 +33,12 @@ module.exports = function(sequelize,
             schema: 'historial',
             classMethods: {
                 associate: function(models) {
+                    models.Historial.belongsTo(models.Lugar,
+
+                        {
+                            foreignKey: 'id_lugar'
+                        }
+                    );
 
                 }
 
@@ -41,4 +47,6 @@ module.exports = function(sequelize,
         }
     );
 
-};
+}
+
+;

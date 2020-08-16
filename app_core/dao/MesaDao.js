@@ -8,7 +8,11 @@ var insertMesa = function(mesa) {
     }
     /*consultar todos los datos de la tabla mesa*/
 var findAllMesa = function() {
-    return Models.Mesa.findAll({});
+    return Models.Mesa.findAll({
+        order: [
+            ['nom_mesa', 'ASC']
+        ],
+    });
 };
 /*modificar un dato de la tabla mesa*/
 var updateMesa = function(mesa, id_mesa, callback) {
@@ -53,10 +57,10 @@ var deleteByIdMesa = function(id_mesa) {
 };
 
 /*consulta un dato de la tabla mesa en especifico*/
-var findByIdMesa = function(id_mesa) {
-    return Models.Mesa.find({
+var findByIdMesa = function(nom_mesa) {
+    return Models.Mesa.findAll({
         where: {
-            id_mesa: id_mesa
+            nom_mesa: nom_mesa
         }
     });
 };

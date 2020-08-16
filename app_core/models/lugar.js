@@ -1,4 +1,4 @@
-/*modelo utilizado para BD tabla LUGAR:2*/
+/*jshintindent:2*/
 module.exports = function(sequelize,
     DataTypes) {
     return sequelize.define('Lugar',
@@ -48,6 +48,12 @@ module.exports = function(sequelize,
                         }
                     );
                     models.Lugar.hasMany(models.Digitador,
+
+                        {
+                            foreignKey: 'id_lugar'
+                        }
+                    );
+                    models.Lugar.hasMany(models.Historial,
 
                         {
                             foreignKey: 'id_lugar'

@@ -75,7 +75,7 @@ var deleteByIdMesa = function(req, res) {
 /*funcion consultar tdos los datos de la tabla mesa*/
 var findByIdMesa = function(req, res) {
     /* llama a la funcion en el dao */
-    MesaDao.findByIdMesa(req.params.id_mesa).then(function(mesa) {
+    MesaDao.findByIdMesa(req.params.nom_mesa).then(function(mesa) {
         /*si no hay error en la consulta enviar respuesta exitosa*/
         Respuesta.sendJsonResponse(res, 200, mesa);
     }).catch(function(error) {

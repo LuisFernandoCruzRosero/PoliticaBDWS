@@ -1,4 +1,4 @@
-/*modelo utilizado para BD tabla TIPO_USUARIO:2*/
+/*jshintindent:2*/
 module.exports = function(sequelize,
     DataTypes) {
     return sequelize.define('TipoUsuario',
@@ -25,6 +25,12 @@ module.exports = function(sequelize,
             schema: 'usuarios',
             classMethods: {
                 associate: function(models) {
+                    models.TipoUsuario.hasMany(models.Digitador,
+
+                        {
+                            foreignKey: 'id_tipo_usuario'
+                        }
+                    );
                     models.TipoUsuario.hasMany(models.Usuario,
 
                         {

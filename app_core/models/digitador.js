@@ -1,4 +1,4 @@
-/*modelo utilizado para BD tabla DIGITADOR:2*/
+/*jshintindent:2*/
 module.exports = function(sequelize,
     DataTypes) {
     return sequelize.define('Digitador',
@@ -61,6 +61,18 @@ module.exports = function(sequelize,
             id_mesa: {
                 type: DataTypes.INTEGER,
                 allowNull: true /* JARR */
+            },
+            id_tipo_usuario: {
+                type: DataTypes.INTEGER,
+                allowNull: true /* JARR */
+            },
+            activo: {
+                type: DataTypes.BOOLEAN,
+                allowNull: true
+            },
+            tel_digitador: {
+                type: DataTypes.STRING,
+                allowNull: true
             }
 
         },
@@ -113,6 +125,12 @@ module.exports = function(sequelize,
 
                         {
                             foreignKey: 'id_mesa'
+                        }
+                    );
+                    models.Digitador.belongsTo(models.TipoUsuario,
+
+                        {
+                            foreignKey: 'id_tipo_usuario'
                         }
                     );
 

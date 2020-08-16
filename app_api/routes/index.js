@@ -50,7 +50,7 @@ router.put('/barrio/:id_barrio', BarrioController.updateBarrio); // Actualizar u
 router.post("/mesa", MesaController.insertMesa); //Inserta una mesa nueva
 router.get("/mesa", MesaController.findAllMesa); //Consulta todas las mesas
 router.delete("/mesa/:id_mesa", MesaController.deleteByIdMesa); //Elimina una de las mesas
-router.get("/mesa/:id_mesa", MesaController.findByIdMesa); //Consulta una de las mesas
+router.get("/mesa/:nom_mesa", MesaController.findByIdMesa); //Consulta una de las mesas
 router.put('/mesa/:id_mesa', MesaController.updateMesa); // Actualizar una mesas
 //*****************************************************************************************
 
