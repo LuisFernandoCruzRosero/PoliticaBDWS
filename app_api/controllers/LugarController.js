@@ -82,7 +82,7 @@ var deleteByIdLugar = function(req, res) {
 /*funcion consultar un dato en especifico de la tabla lugar*/
 var findByIdLugar = function(req, res) {
     /* llama a la funcion en el dao y le envia el parametro lugar*/
-    LugarDao.findByIdLugar(req.params.id_lugar).then(function(lugar) {
+    LugarDao.findByIdLugar(req.params.nom_lugar).then(function(lugar) {
         /*si no hay error en la consulta enviar respuesta exitosa*/
         Respuesta.sendJsonResponse(res, 200, lugar);
     }).catch(function(error) {

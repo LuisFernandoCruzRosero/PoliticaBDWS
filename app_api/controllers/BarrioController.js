@@ -92,7 +92,7 @@ var findAllBarrioComuna = function(req, res) {
 /*funcion consultar un dato en especifico de la agenda*/
 var findByIdBarrio = function(req, res) {
     /* llama a la funcion en el dao y le envia el parametro barrio*/
-    BarrioDao.findByIdBarrio(req.params.id_barrio).then(function(usuario) {
+    BarrioDao.findByIdBarrio(req.params.nom_barrio).then(function(usuario) {
         /*si no hay error en la consulta enviar respuesta exitosa*/
         Respuesta.sendJsonResponse(res, 200, usuario);
     }).catch(function(error) {

@@ -72,7 +72,7 @@ var deleteByIdComuna = function(req, res) {
 /*funcion consultar un dato en especifico de la tabla comuna*/
 var findByIdComuna = function(req, res) {
     /* llama a la funcion en el dao y le envia el parametro comuna*/
-    ComunaDao.findByIdComuna(req.params.id_comuna).then(function(comuna) {
+    ComunaDao.findByIdComuna(req.params.nom_comuna).then(function(comuna) {
         /*si no hay error en la consulta enviar respuesta exitosa*/
         Respuesta.sendJsonResponse(res, 200, comuna);
     }).catch(function(error) {
