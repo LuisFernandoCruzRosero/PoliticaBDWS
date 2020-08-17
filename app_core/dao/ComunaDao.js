@@ -59,10 +59,10 @@ var deleteByIdComuna = function(id_comuna) {
 };
 
 /*consulta un dato de la tabla comuna en especifico*/
-var findByIdComuna = function(id_comuna) {
+var findByIdComuna = function(nom_comuna) {
     return Models.Comuna.findAll({
         where: {
-            id_comuna: id_comuna
+            nom_comuna: nom_comuna
         }
     });
 };

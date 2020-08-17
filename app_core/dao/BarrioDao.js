@@ -82,10 +82,10 @@ var findAllBarrioComuna = function(id_comunaB) {
 };
 
 /*consulta un dato de la tabla barrio en especifico*/
-var findByIdBarrio = function(id_barrio) {
+var findByIdBarrio = function(nom_barrio) {
     return Models.Barrio.findAll({
         where: {
-            id_barrio: id_barrio
+            nom_barrio: nom_barrio
         }
     });
 };

@@ -77,10 +77,10 @@ var findAllLugarComuna = function(id_comunaL) {
 };
 
 /*consulta un dato de la tabla lugar en especifico*/
-var findByIdLugar = function(id_lugar) {
+var findByIdLugar = function(nom_lugar) {
     return Models.Lugar.findAll({
         where: {
-            id_lugar: id_lugar
+            nom_lugar: nom_lugar
         }
     });
 };
