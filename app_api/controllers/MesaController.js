@@ -84,9 +84,22 @@ var findByIdMesa = function(req, res) {
     });
 };
 
+/* funcion consultar cantidad de datos en la tabla Mesa */
+var findByIdTotalMesa = function(req, res) {
+    /* llama a la funcion en el dao */
+    MesaDao.findByIdTotalMesa().then(function(mesa) {
+        /*si no hay error en la consulta enviar respuesta exitosa*/
+        Respuesta.sendJsonResponse(res, 200, mesa);
+    }).catch(function(error) {
+        /*si  hay error en la consulta enviar respuesta de error*/
+        Respuesta.sendJsonResponse(res, 500, { "error": 'se ha producido un error en la consulta' });
+    });
+};
+
 /*exportar funciones*/
 module.exports.insertMesa = insertMesa;
 module.exports.findAllMesa = findAllMesa;
 module.exports.updateMesa = updateMesa;
 module.exports.deleteByIdMesa = deleteByIdMesa;
 module.exports.findByIdMesa = findByIdMesa;
+module.exports.findByIdTotalMesa = findByIdTotalMesa;

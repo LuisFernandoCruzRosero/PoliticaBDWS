@@ -81,9 +81,22 @@ var findByIdComuna = function(req, res) {
     });
 };
 
+/* funcion consultar cantidad de datos en la tabla Comuna */
+var findByIdTotalComuna = function(req, res) {
+    /* llama a la funcion en el dao */
+    ComunaDao.findByIdTotalComuna().then(function(comuna) {
+        /*si no hay error en la consulta enviar respuesta exitosa*/
+        Respuesta.sendJsonResponse(res, 200, comuna);
+    }).catch(function(error) {
+        /*si  hay error en la consulta enviar respuesta de error*/
+        Respuesta.sendJsonResponse(res, 500, { "error": 'se ha producido un error en la consulta' });
+    });
+};
+
 /*exportar funciones*/
 module.exports.insertComuna = insertComuna;
 module.exports.findAllComuna = findAllComuna;
 module.exports.updateComuna = updateComuna;
 module.exports.deleteByIdComuna = deleteByIdComuna;
 module.exports.findByIdComuna = findByIdComuna;
+module.exports.findByIdTotalComuna = findByIdTotalComuna;

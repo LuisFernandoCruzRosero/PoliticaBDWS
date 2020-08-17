@@ -33,6 +33,7 @@ router.get("/comuna", ComunaController.findAllComuna); //Consulta todas las comu
 router.delete("/comuna/:id_comuna", ComunaController.deleteByIdComuna); //Elimina una de las comunas
 router.get("/comuna/:id_comuna", ComunaController.findByIdComuna); //Consulta una de las comunas
 router.put('/comuna/:id_comuna', ComunaController.updateComuna); // Actualizar una comuna
+router.get("/comunaContar", ComunaController.findByIdTotalComuna); //Consulta el total de comunas
 //*****************************************************************************************
 
 
@@ -44,6 +45,7 @@ router.delete("/barrio/:id_barrio", BarrioController.deleteByIdBarrio); //Elimin
 router.get("/barrio/:id_barrio", BarrioController.findByIdBarrio); //Consulta una de las barrio
 router.get("/barrioComuna/:id_comunaB", BarrioController.findAllBarrioComuna); //Consulta Barrios por comuna
 router.put('/barrio/:id_barrio', BarrioController.updateBarrio); // Actualizar una barrio
+router.get("/barrioContar", BarrioController.findByIdTotalBarrio); //Consulta el total de barrios
 //*****************************************************************************************
 
 //*****************************************************************************************
@@ -53,6 +55,7 @@ router.get("/mesa", MesaController.findAllMesa); //Consulta todas las mesas
 router.delete("/mesa/:id_mesa", MesaController.deleteByIdMesa); //Elimina una de las mesas
 router.get("/mesa/:nom_mesa", MesaController.findByIdMesa); //Consulta una de las mesas
 router.put('/mesa/:id_mesa', MesaController.updateMesa); // Actualizar una mesas
+router.get("/mesaContar", MesaController.findByIdTotalMesa); //Consulta todas las mesas
 //*****************************************************************************************
 
 

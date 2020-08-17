@@ -60,15 +60,23 @@ var deleteByIdComuna = function(id_comuna) {
 
 /*consulta un dato de la tabla comuna en especifico*/
 var findByIdComuna = function(id_comuna) {
-    return Models.Comuna.find({
+    return Models.Comuna.findAll({
         where: {
             id_comuna: id_comuna
         }
     });
 };
 
+/* Consulta el numero total de datos de la tabla barrio */
+var findByIdTotalComuna = function() {
+    return Models.Comuna.count({
+        col: 'id_comuna'
+    })
+}
+
 module.exports.insertComuna = insertComuna;
 module.exports.findAllComuna = findAllComuna;
 module.exports.updateComuna = updateComuna;
 module.exports.deleteByIdComuna = deleteByIdComuna;
 module.exports.findByIdComuna = findByIdComuna;
+module.exports.findByIdTotalComuna = findByIdTotalComuna;

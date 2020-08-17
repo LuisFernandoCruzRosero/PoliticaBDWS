@@ -83,12 +83,19 @@ var findAllBarrioComuna = function(id_comunaB) {
 
 /*consulta un dato de la tabla barrio en especifico*/
 var findByIdBarrio = function(id_barrio) {
-    return Models.Barrio.find({
+    return Models.Barrio.findAll({
         where: {
             id_barrio: id_barrio
         }
     });
 };
+
+/* Consulta el numero total de datos de la tabla barrio */
+var findByIdTotalBarrio = function() {
+    return Models.Barrio.count({
+        col: 'id_barrio'
+    })
+}
 
 module.exports.insertBarrio = insertBarrio;
 module.exports.findAllBarrio = findAllBarrio;
@@ -96,3 +103,4 @@ module.exports.updateBarrio = updateBarrio;
 module.exports.deleteByIdBarrio = deleteByIdBarrio;
 module.exports.findAllBarrioComuna = findAllBarrioComuna;
 module.exports.findByIdBarrio = findByIdBarrio;
+module.exports.findByIdTotalBarrio = findByIdTotalBarrio;

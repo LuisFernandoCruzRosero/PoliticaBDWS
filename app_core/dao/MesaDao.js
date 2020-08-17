@@ -65,6 +65,12 @@ var findByIdMesa = function(nom_mesa) {
     });
 };
 
+/* Consulta el numero total de datos de la tabla mesa */
+var findByIdTotalMesa = function() {
+    return Models.Mesa.count({
+        col: 'id_mesa'
+    })
+}
 
 
 module.exports.insertMesa = insertMesa;
@@ -72,3 +78,4 @@ module.exports.findAllMesa = findAllMesa;
 module.exports.updateMesa = updateMesa;
 module.exports.deleteByIdMesa = deleteByIdMesa;
 module.exports.findByIdMesa = findByIdMesa;
+module.exports.findByIdTotalMesa = findByIdTotalMesa;
