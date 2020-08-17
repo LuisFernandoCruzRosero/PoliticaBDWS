@@ -31,7 +31,7 @@ router.get("/tipoUsuario", TipoUsuarioController.findAllTipoUsuario);
 router.post("/comuna", ComunaController.insertComuna); //Inserta una comuna nueva
 router.get("/comuna", ComunaController.findAllComuna); //Consulta todas las comunas
 router.delete("/comuna/:id_comuna", ComunaController.deleteByIdComuna); //Elimina una de las comunas
-router.get("/comuna/:id_comuna", ComunaController.findByIdComuna); //Consulta una de las comunas
+router.get("/comuna/:nom_comuna", ComunaController.findByIdComuna); //Consulta una de las comunas
 router.put('/comuna/:id_comuna', ComunaController.updateComuna); // Actualizar una comuna
 router.get("/comunaContar", ComunaController.findByIdTotalComuna); //Consulta el total de comunas
 //*****************************************************************************************
@@ -42,7 +42,7 @@ router.get("/comunaContar", ComunaController.findByIdTotalComuna); //Consulta el
 router.post("/barrio", BarrioController.insertBarrio); //Inserta una barrio nueva
 router.get("/barrio", BarrioController.findAllBarrio); //Consulta todas las barrio
 router.delete("/barrio/:id_barrio", BarrioController.deleteByIdBarrio); //Elimina una de las barrio
-router.get("/barrio/:id_barrio", BarrioController.findByIdBarrio); //Consulta una de las barrio
+router.get("/barrio/:nom_barrio", BarrioController.findByIdBarrio); //Consulta una de las barrio
 router.get("/barrioComuna/:id_comunaB", BarrioController.findAllBarrioComuna); //Consulta Barrios por comuna
 router.put('/barrio/:id_barrio', BarrioController.updateBarrio); // Actualizar una barrio
 router.get("/barrioContar", BarrioController.findByIdTotalBarrio); //Consulta el total de barrios
@@ -65,7 +65,7 @@ router.get("/mesaContar", MesaController.findByIdTotalMesa); //Consulta todas la
 router.post("/lugar", LugarController.insertLugar); //Inserta una lugar nueva
 router.get("/lugar", LugarController.findAllLugar); //Consulta todas las lugar
 router.delete("/lugar/:id_lugar", LugarController.deleteByIdLugar); //Elimina una de las lugar
-router.get("/lugar/:id_lugar", LugarController.findByIdLugar); //Consulta una de las lugar
+router.get("/lugar/:nom_lugar", LugarController.findByIdLugar); //Consulta una de las lugar
 router.put('/lugar/:id_lugar', LugarController.updateLugar); // Actualizar una lugar
 router.get("/lugarComuna/:id_comunaL", LugarController.findAllLugarComuna); //Consultatodos los lugares de una comuna
 //*****************************************************************************************
