@@ -90,6 +90,15 @@ var findByIdBarrio = function(nom_barrio) {
     });
 };
 
+/*consulta los barrios por zona roja */
+var findAllByIdBarrioZona = function(zona_roja) {
+    return Models.Barrio.findAll({
+        where: {
+            zona_roja: zona_roja
+        }
+    });
+};
+
 /* Consulta el numero total de datos de la tabla barrio */
 var findByIdTotalBarrio = function() {
     return Models.Barrio.count({
@@ -104,3 +113,4 @@ module.exports.deleteByIdBarrio = deleteByIdBarrio;
 module.exports.findAllBarrioComuna = findAllBarrioComuna;
 module.exports.findByIdBarrio = findByIdBarrio;
 module.exports.findByIdTotalBarrio = findByIdTotalBarrio;
+module.exports.findAllByIdBarrioZona = findAllByIdBarrioZona;

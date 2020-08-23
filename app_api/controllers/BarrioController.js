@@ -113,6 +113,19 @@ var findByIdTotalBarrio = function(req, res) {
     });
 };
 
+/* funcion consultar cantidad de datos en la tabla barrio */
+var findAllByIdBarrioZona = function(req, res) {
+    /* llama a la funcion en el dao */
+    BarrioDao.findAllByIdBarrioZona(req.params.zona_roja).then(function(barrio) {
+        /*si no hay error en la consulta enviar respuesta exitosa*/
+        Respuesta.sendJsonResponse(res, 200, barrio);
+    }).catch(function(error) {
+        /*si  hay error en la consulta enviar respuesta de error*/
+        Respuesta.sendJsonResponse(res, 500, { "error": 'se ha producido un error en la consulta' });
+    });
+};
+
+
 /*exportar funciones*/
 module.exports.insertBarrio = insertBarrio;
 module.exports.findAllBarrio = findAllBarrio;
@@ -121,3 +134,4 @@ module.exports.deleteByIdBarrio = deleteByIdBarrio;
 module.exports.findAllBarrioComuna = findAllBarrioComuna;
 module.exports.findByIdBarrio = findByIdBarrio;
 module.exports.findByIdTotalBarrio = findByIdTotalBarrio;
+module.exports.findAllByIdBarrioZona = findAllByIdBarrioZona;

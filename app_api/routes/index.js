@@ -44,6 +44,7 @@ router.get("/barrio", BarrioController.findAllBarrio); //Consulta todas las barr
 router.delete("/barrio/:id_barrio", BarrioController.deleteByIdBarrio); //Elimina una de las barrio
 router.get("/barrio/:nom_barrio", BarrioController.findByIdBarrio); //Consulta una de las barrio
 router.get("/barrioComuna/:id_comunaB", BarrioController.findAllBarrioComuna); //Consulta Barrios por comuna
+router.get("/barrioZona/:zona_roja", BarrioController.findAllByIdBarrioZona); //Consulta Barrios por zona_roja
 router.put('/barrio/:id_barrio', BarrioController.updateBarrio); // Actualizar una barrio
 router.get("/barrioContar", BarrioController.findByIdTotalBarrio); //Consulta el total de barrios
 //*****************************************************************************************
