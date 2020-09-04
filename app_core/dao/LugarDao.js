@@ -85,9 +85,27 @@ var findByIdLugar = function(nom_lugar) {
     });
 };
 
+/*consulta los Lugares por zona roja */
+var findAllByIdLugarZona = function(zona_roja) {
+    return Models.Lugar.findAll({
+        where: {
+            zona_roja: zona_roja
+        }
+    });
+};
+
+/* Consulta el numero total de datos de la tabla mesa */
+var findByIdTotalLugar = function() {
+    return Models.Lugar.count({
+        col: 'id_lugar'
+    })
+}
+
 module.exports.insertLugar = insertLugar;
 module.exports.findAllLugar = findAllLugar;
 module.exports.updateLugar = updateLugar;
 module.exports.deleteByIdLugar = deleteByIdLugar;
 module.exports.findAllLugarComuna = findAllLugarComuna;
 module.exports.findByIdLugar = findByIdLugar;
+module.exports.findAllByIdLugarZona = findAllByIdLugarZona;
+module.exports.findByIdTotalLugar = findByIdTotalLugar;

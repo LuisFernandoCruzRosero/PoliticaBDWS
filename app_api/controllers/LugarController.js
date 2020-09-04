@@ -101,6 +101,31 @@ var findAllLugarComuna = function(req, res) {
         Respuesta.sendJsonResponse(res, 500, error)
     });
 };
+
+/* funcion consultar cantidad de datos en la tabla Mesa */
+var findByIdTotalLugar = function(req, res) {
+    /* llama a la funcion en el dao */
+    LugarDao.findByIdTotalLugar().then(function(lugar) {
+        /*si no hay error en la consulta enviar respuesta exitosa*/
+        Respuesta.sendJsonResponse(res, 200, lugar);
+    }).catch(function(error) {
+        /*si  hay error en la consulta enviar respuesta de error*/
+        Respuesta.sendJsonResponse(res, 500, { "error": 'se ha producido un error en la consulta' });
+    });
+};
+
+/* funcion consultar cantidad de datos en la tabla lugar */
+var findAllByIdLugarZona = function(req, res) {
+    /* llama a la funcion en el dao */
+    LugarDao.findAllByIdLugarZona(req.params.zona_roja).then(function(lugar) {
+        /*si no hay error en la consulta enviar respuesta exitosa*/
+        Respuesta.sendJsonResponse(res, 200, lugar);
+    }).catch(function(error) {
+        /*si  hay error en la consulta enviar respuesta de error*/
+        Respuesta.sendJsonResponse(res, 500, { "error": 'se ha producido un error en la consulta' });
+    });
+};
+
 /*exportar funciones*/
 module.exports.insertLugar = insertLugar;
 module.exports.findAllLugar = findAllLugar;
@@ -108,3 +133,5 @@ module.exports.deleteByIdLugar = deleteByIdLugar;
 module.exports.updateLugar = updateLugar;
 module.exports.findAllLugarComuna = findAllLugarComuna;
 module.exports.findByIdLugar = findByIdLugar;
+module.exports.findAllByIdLugarZona = findAllByIdLugarZona;
+module.exports.findByIdTotalLugar = findByIdTotalLugar;

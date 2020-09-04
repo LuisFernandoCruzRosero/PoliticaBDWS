@@ -56,7 +56,7 @@ router.get("/mesa", MesaController.findAllMesa); //Consulta todas las mesas
 router.delete("/mesa/:id_mesa", MesaController.deleteByIdMesa); //Elimina una de las mesas
 router.get("/mesa/:nom_mesa", MesaController.findByIdMesa); //Consulta una de las mesas
 router.put('/mesa/:id_mesa', MesaController.updateMesa); // Actualizar una mesas
-router.get("/mesaContar", MesaController.findByIdTotalMesa); //Consulta todas las mesas
+router.get("/mesaContar", MesaController.findByIdTotalMesa); //Consulta el total las mesas
 //*****************************************************************************************
 
 
@@ -69,6 +69,8 @@ router.delete("/lugar/:id_lugar", LugarController.deleteByIdLugar); //Elimina un
 router.get("/lugar/:nom_lugar", LugarController.findByIdLugar); //Consulta una de las lugar
 router.put('/lugar/:id_lugar', LugarController.updateLugar); // Actualizar una lugar
 router.get("/lugarComuna/:id_comunaL", LugarController.findAllLugarComuna); //Consultatodos los lugares de una comuna
+router.get("/lugarContar", LugarController.findByIdTotalLugar); //Consulta el total los lugares
+router.get("/lugarZona/:zona_roja", LugarController.findAllByIdLugarZona); //Consulta Barrios por zona_roja
 //*****************************************************************************************
 
 
