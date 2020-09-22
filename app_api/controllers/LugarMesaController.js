@@ -93,6 +93,18 @@ var insertLugarMesa = function(req, res) {
     });
 }
 
+/* funcion consultar cantidad de datos en la tabla Mesa */
+var findByIdTotalLugarMesa = function(req, res) {
+    /* llama a la funcion en el dao */
+    LugarMesaDao.findByIdTotalLugarMesa().then(function(mesa) {
+        /*si no hay error en la consulta enviar respuesta exitosa*/
+        Respuesta.sendJsonResponse(res, 200, mesa);
+    }).catch(function(error) {
+        /*si  hay error en la consulta enviar respuesta de error*/
+        Respuesta.sendJsonResponse(res, 500, { "error": 'se ha producido un error en la consulta' });
+    });
+};
+
 /*exportar funciones*/
 module.exports.deleteByIdLugarMesa = deleteByIdLugarMesa;
 module.exports.insertLugarMesa = insertLugarMesa;
@@ -100,3 +112,4 @@ module.exports.updateLugarMesa = updateLugarMesa;
 module.exports.findByIdLugarMesa = findByIdLugarMesa;
 module.exports.findAllByIdLugarMesa = findAllByIdLugarMesa;
 module.exports.findAllLugarMesa = findAllLugarMesa;
+module.exports.findByIdTotalLugarMesa = findByIdTotalLugarMesa;

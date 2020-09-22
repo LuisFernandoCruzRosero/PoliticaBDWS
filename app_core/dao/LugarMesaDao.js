@@ -72,9 +72,18 @@ var deleteByIdLugarMesa = function(id_lugar_mesa) {
     });
 };
 
+/* Consulta el numero total de datos de la tabla mesa */
+var findByIdTotalLugarMesa = function() {
+    return Models.LugarMesa.count({
+        col: 'id_lugar_mesa'
+    })
+}
+
+
 module.exports.deleteByIdLugarMesa = deleteByIdLugarMesa;
 module.exports.insertLugarMesa = insertLugarMesa;
 module.exports.updateLugarMesa = updateLugarMesa;
 module.exports.findByIdLugarMesa = findByIdLugarMesa;
 module.exports.findAllByIdLugarMesa = findAllByIdLugarMesa;
 module.exports.findAllLugarMesa = findAllLugarMesa;
+module.exports.findByIdTotalLugarMesa = findByIdTotalLugarMesa;

@@ -4,7 +4,8 @@ var sequelize = Models.sequelize;
 var insertAgenda = function(agenda) {
     return Models.Agenda.create({
         fecha: agenda.fecha,
-        lugar: agenda.hora,
+        lugar: agenda.lugar,
+        hora: agenda.hora,
         descripcion: agenda.descripcion,
         id_usuario: agenda.id_usuario,
     });
@@ -33,7 +34,8 @@ var updateAgenda = function(agenda, id_agenda, callback) {
             if (resultado) {
                 resultado.updateAttributes({
                         fecha: agenda.fecha,
-                        lugar: agenda.hora,
+                        lugar: agenda.lugar,
+                        hora: agenda.hora,
                         descripcion: agenda.descripcion,
                         id_usuario: agenda.id_usuario,
                     })
@@ -90,6 +92,14 @@ var findAllAgendaFecha = function(fecha) {
     });
 };
 
+/* Consulta el numero total de datos de la tabla mesa */
+var findByIdTotalAgenda = function() {
+    return Models.Agenda.count({
+        col: 'id_agenda'
+    })
+}
+
+
 module.exports.insertAgenda = insertAgenda;
 module.exports.findAllAgenda = findAllAgenda;
 module.exports.deleteByIdAgenda = deleteByIdAgenda;
@@ -97,3 +107,4 @@ module.exports.updateAgenda = updateAgenda;
 module.exports.findAllAgendaUsuario = findAllAgendaUsuario;
 module.exports.findAllAgendaFecha = findAllAgendaFecha;
 module.exports.findByIdAgenda = findByIdAgenda;
+module.exports.findByIdTotalAgenda = findByIdTotalAgenda;

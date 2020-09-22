@@ -8,8 +8,8 @@ var insertAgenda = function(req, res) {
     /*objeto que recoge los datos enviados desde la app*/
     var agenda = {
         fecha: req.body.fecha,
-        nom_usu: req.body.nom_usu,
         lugar: req.body.lugar,
+        hora: req.body.hora,
         descripcion: req.body.descripcion,
         id_usuario: req.body.id_usuario,
     };
@@ -112,6 +112,18 @@ var findAllAgendaFecha = function(req, res) {
         Respuesta.sendJsonResponse(res, 500, error)
     });
 };
+
+/* funcion consultar cantidad de datos en la tabla Mesa */
+var findByIdTotalAgenda = function(req, res) {
+    /* llama a la funcion en el dao */
+    AgendaDao.findByIdTotalAgenda().then(function(agenda) {
+        /*si no hay error en la consulta enviar respuesta exitosa*/
+        Respuesta.sendJsonResponse(res, 200, agenda);
+    }).catch(function(error) {
+        /*si  hay error en la consulta enviar respuesta de error*/
+        Respuesta.sendJsonResponse(res, 500, { "error": 'se ha producido un error en la consulta' });
+    });
+};
 /*exportar funciones*/
 module.exports.insertAgenda = insertAgenda;
 module.exports.findAllAgenda = findAllAgenda;
@@ -120,3 +132,4 @@ module.exports.updateAgenda = updateAgenda;
 module.exports.findByIdAgenda = findByIdAgenda;
 module.exports.findAllAgendaFecha = findAllAgendaFecha;
 module.exports.findAllAgendaUsuario = findAllAgendaUsuario;
+module.exports.findByIdTotalAgenda = findByIdTotalAgenda;

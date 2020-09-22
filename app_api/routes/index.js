@@ -82,6 +82,7 @@ router.delete("/lugarMesa/:id_lugar_mesa", LugarMesaController.deleteByIdLugarMe
 router.get("/lugarMesa/:id_lugar/:id_mesa", LugarMesaController.findByIdLugarMesa); //Consulta una de las LugarMesa
 router.put('/lugarMesa/:id_lugar_mesa', LugarMesaController.updateLugarMesa); // Actualizar una LugarMesa
 router.get("/lugarMesaLugar/:id_lugar", LugarMesaController.findAllByIdLugarMesa); //Consulta los lugares de una Mesa
+router.get("/lugarmesaContar", LugarMesaController.findByIdTotalLugarMesa); //Consulta el total de Lugar Mesa
 //*****************************************************************************************
 
 //*****************************************************************************************
@@ -93,6 +94,7 @@ router.get("/agenda/:id_agenda", AgendaController.findByIdAgenda); //Consulta un
 router.put('/agenda/:id_agenda', AgendaController.updateAgenda); // Actualizar una agenda
 router.get("/agendaFecha/:fecha", AgendaController.findAllAgendaFecha); //Consulta  agenda por fecha
 router.get("/agendaUsuario/:id_usuario", AgendaController.findAllAgendaUsuario); //Consulta agenda por usuario
+router.get("/agendaContar", AgendaController.findByIdTotalAgenda); //Consulta el total de Agenda
 //*****************************************************************************************
 
 //*****************************************************************************************
