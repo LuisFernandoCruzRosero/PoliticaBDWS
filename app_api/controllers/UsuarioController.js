@@ -195,6 +195,18 @@ var deleteByIdUsuario = function(req, res) {
     });
 };
 
+/* funcion consultar cantidad de datos en la tabla Coordinador */
+var findByIdTotalUsuarioCoordinador = function(req, res) {
+    /* llama a la funcion en el dao */
+    LugarMesaDao.findByIdTotalUsuarioCoordinador().then(function(coordinador) {
+        /*si no hay error en la consulta enviar respuesta exitosa*/
+        Respuesta.sendJsonResponse(res, 200, coordinador);
+    }).catch(function(error) {
+        /*si  hay error en la consulta enviar respuesta de error*/
+        Respuesta.sendJsonResponse(res, 500, { "error": 'se ha producido un error en la consulta' });
+    });
+};
+
 /*exportar funciones*/
 module.exports.findAllUsuarioCandidato = findAllUsuarioCandidato;
 module.exports.findAllUsuarioCandidatoCedula = findAllUsuarioCandidatoCedula;
@@ -208,3 +220,4 @@ module.exports.updateUsuario = updateUsuario;
 module.exports.insertUsuario = insertUsuario;
 module.exports.deleteByIdUsuario = deleteByIdUsuario;
 module.exports.findAllUsuarioCoordinador = findAllUsuarioCoordinador;
+module.exports.findByIdTotalUsuarioCoordinador = findByIdTotalUsuarioCoordinador;

@@ -160,6 +160,13 @@ var deleteByIdVotante = function(id_votante) {
     });
 };
 
+/* Consulta el numero total de datos de la tabla votante */
+var findByIdTotalVotante = function() {
+    return Models.Votante.count({
+        col: 'id_votante'
+    })
+}
+
 module.exports.findAllVotante = findAllVotante;
 module.exports.updateVotante = updateVotante;
 module.exports.findByIdVotante = findByIdVotante;
@@ -172,3 +179,4 @@ module.exports.findAllVotanteLugar = findAllVotanteLugar;
 module.exports.findAllVotanteLider = findAllVotanteLider;
 module.exports.findAllVotanteUsuario = findAllVotanteUsuario;
 module.exports.findByIVotanteCedula = findByIVotanteCedula;
+module.exports.findByIdTotalVotante = findByIdTotalVotante;

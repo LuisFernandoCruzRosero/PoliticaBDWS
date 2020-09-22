@@ -148,6 +148,13 @@ var deleteByIdLider = function(id_lider) {
     });
 };
 
+/* Consulta el numero total de datos de la tabla lider */
+var findByIdTotalLider = function() {
+    return Models.Lider.count({
+        col: 'id_lider'
+    })
+}
+
 module.exports.findAllLider = findAllLider;
 module.exports.updateLider = updateLider;
 module.exports.findByIdLider = findByIdLider;
@@ -159,3 +166,4 @@ module.exports.findAllLiderUsuario = findAllLiderUsuario;
 module.exports.findAllLiderLugar = findAllLiderLugar;
 module.exports.findAllLiderBarrio = findAllLiderBarrio;
 module.exports.findAllLiderCedula = findAllLiderCedula;
+module.exports.findByIdTotalLider = findByIdTotalLider;

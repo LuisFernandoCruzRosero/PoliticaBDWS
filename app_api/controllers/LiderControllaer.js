@@ -176,6 +176,18 @@ var findAllLiderCedula = function(req, res) {
     });
 };
 
+/* funcion consultar cantidad de datos en la tabla Lider */
+var findByIdTotalLider = function(req, res) {
+    /* llama a la funcion en el dao */
+    LugarMesaDao.findByIdTotalLider().then(function(lider) {
+        /*si no hay error en la consulta enviar respuesta exitosa*/
+        Respuesta.sendJsonResponse(res, 200, lider);
+    }).catch(function(error) {
+        /*si  hay error en la consulta enviar respuesta de error*/
+        Respuesta.sendJsonResponse(res, 500, { "error": 'se ha producido un error en la consulta' });
+    });
+};
+
 module.exports.findAllLider = findAllLider;
 module.exports.updateLider = updateLider;
 module.exports.findByIdLider = findByIdLider;
@@ -187,3 +199,4 @@ module.exports.findAllLiderUsuario = findAllLiderUsuario;
 module.exports.findAllLiderLugar = findAllLiderLugar;
 module.exports.findAllLiderBarrio = findAllLiderBarrio;
 module.exports.findAllLiderCedula = findAllLiderCedula;
+module.exports.findByIdTotalLider = findByIdTotalLider;

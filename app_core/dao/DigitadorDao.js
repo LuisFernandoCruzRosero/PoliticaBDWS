@@ -106,9 +106,17 @@ var deleteByIdDigitador = function(id_digitador) {
     });
 };
 
+/* Consulta el numero total de datos de la tabla digitador */
+var findByIdTotalDigitador = function() {
+    return Models.Digitador.count({
+        col: 'id_digitador'
+    })
+}
+
 module.exports.findAllDigitador = findAllDigitador;
 module.exports.findByIdDigitadorCedula = findByIdDigitadorCedula;
 module.exports.findByIdDigitador = findByIdDigitador;
 module.exports.updateDigitador = updateDigitador;
 module.exports.insertDigitador = insertDigitador;
 module.exports.deleteByIdDigitador = deleteByIdDigitador;
+module.exports.findByIdTotalDigitador = findByIdTotalDigitador;

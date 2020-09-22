@@ -153,6 +153,16 @@ var deleteByIdUsuario = function(id_usuario) {
     });
 };
 
+/* Consulta el numero total de datos de la tabla coordinador */
+var findByIdTotalUsuarioCoordinador = function() {
+    return Models.UsuarioCoordinador.count({
+        col: 'id_usuario',
+        where: {
+            id_tipo_usuario: 3
+        }
+    })
+}
+
 module.exports.findAllUsuarioCandidato = findAllUsuarioCandidato;
 module.exports.findAllUsuarioCandidatoCedula = findAllUsuarioCandidatoCedula;
 module.exports.findAllUsuarioAdministradorCedula = findAllUsuarioAdministradorCedula;
@@ -165,3 +175,4 @@ module.exports.updateUsuario = updateUsuario;
 module.exports.insertUsuario = insertUsuario;
 module.exports.deleteByIdUsuario = deleteByIdUsuario;
 module.exports.findAllUsuarioCoordinador = findAllUsuarioCoordinador;
+module.exports.findByIdTotalUsuarioCoordinador = findByIdTotalUsuarioCoordinador;

@@ -186,6 +186,18 @@ var findByIVotanteCedula = function(req, res) {
     });
 };
 
+/* funcion consultar cantidad de datos en la tabla Votante */
+var findByIdTotalVotante = function(req, res) {
+    /* llama a la funcion en el dao */
+    VotanteDao.findByIdTotalVotante().then(function(votante) {
+        /*si no hay error en la consulta enviar respuesta exitosa*/
+        Respuesta.sendJsonResponse(res, 200, votante);
+    }).catch(function(error) {
+        /*si  hay error en la consulta enviar respuesta de error*/
+        Respuesta.sendJsonResponse(res, 500, { "error": 'se ha producido un error en la consulta' });
+    });
+};
+
 /*exportar funciones*/
 module.exports.findAllVotante = findAllVotante;
 module.exports.updateVotante = updateVotante;
@@ -199,3 +211,4 @@ module.exports.findAllVotanteLugar = findAllVotanteLugar;
 module.exports.findAllVotanteLider = findAllVotanteLider;
 module.exports.findAllVotanteUsuario = findAllVotanteUsuario;
 module.exports.findByIVotanteCedula = findByIVotanteCedula;
+module.exports.findByIdTotalVotante = findByIdTotalVotante;
