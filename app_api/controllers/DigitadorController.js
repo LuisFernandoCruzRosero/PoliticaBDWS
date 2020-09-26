@@ -131,7 +131,7 @@ var deleteByIdDigitador = function(req, res) {
 /* funcion consultar cantidad de datos en la tabla Digitador */
 var findByIdTotalDigitador = function(req, res) {
     /* llama a la funcion en el dao */
-    LugarMesaDao.findByIdTotalDigitador().then(function(digitador) {
+    DigitadorDao.findByIdTotalDigitador().then(function(digitador) {
         /*si no hay error en la consulta enviar respuesta exitosa*/
         Respuesta.sendJsonResponse(res, 200, digitador);
     }).catch(function(error) {

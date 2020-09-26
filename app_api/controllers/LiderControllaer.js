@@ -179,7 +179,7 @@ var findAllLiderCedula = function(req, res) {
 /* funcion consultar cantidad de datos en la tabla Lider */
 var findByIdTotalLider = function(req, res) {
     /* llama a la funcion en el dao */
-    LugarMesaDao.findByIdTotalLider().then(function(lider) {
+    LiderDao.findByIdTotalLider().then(function(lider) {
         /*si no hay error en la consulta enviar respuesta exitosa*/
         Respuesta.sendJsonResponse(res, 200, lider);
     }).catch(function(error) {

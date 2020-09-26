@@ -198,7 +198,7 @@ var deleteByIdUsuario = function(req, res) {
 /* funcion consultar cantidad de datos en la tabla Coordinador */
 var findByIdTotalUsuarioCoordinador = function(req, res) {
     /* llama a la funcion en el dao */
-    LugarMesaDao.findByIdTotalUsuarioCoordinador().then(function(coordinador) {
+    UsuarioDao.findByIdTotalUsuarioCoordinador().then(function(coordinador) {
         /*si no hay error en la consulta enviar respuesta exitosa*/
         Respuesta.sendJsonResponse(res, 200, coordinador);
     }).catch(function(error) {
