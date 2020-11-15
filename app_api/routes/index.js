@@ -137,10 +137,11 @@ router.get("/usuarioAdministradorCedula", UsuarioController.findAllUsuarioAdmini
 router.get("/usuarioCoordinador", UsuarioController.findAllUsuarioCoordinador); //Consulta todas los usuarios por el coordindor
 router.get("/usuarioCoordinadorCedula/:ced_usuario", UsuarioController.findAllUsuarioCoordinadorCedula); //Consulta el coordinador por  la cedula
 router.get("/usuario", UsuarioController.findAllUsuario); //Consulta todas los usuarios
-router.get("/usuario/:ced_usuario", UsuarioController.findAllUsuarioCedula); //Consulta todas los usuarios por la cedula
+router.get("/usuarioCedula/:ced_usuario", UsuarioController.findAllUsuarioCedula); //Consulta todas los usuarios por la cedula
 router.get("/usuario/:id_usaurio", UsuarioController.findByIdUsuario); //Consulta todas los usuarios
 router.put("/usuario/:id_usuario", UsuarioController.updateUsuario); //Actualiza un usuario
 router.delete("/usuario/:id_usuario", UsuarioController.deleteByIdUsuario); //Elimina un usuario
+router.get("/usuarioCoordinadorContar", UsuarioController.findByIdTotalUsuarioCoordinador); //Consulta todas los usuarios
 //*****************************************************************************************
 
 
@@ -151,7 +152,8 @@ router.get("/digitador", DigitadorController.findAllDigitador); //Consulta al di
 router.get("/digitador/:id_digitador", DigitadorController.findByIdDigitador); //Consulta al digitador
 router.get("/digitadorCedula/:ced_digitador", DigitadorController.findByIdDigitadorCedula); //Consulta al digitador por cedula
 router.put("/digitador/:id_digitador", DigitadorController.updateDigitador); //Actualiza un digitador
-router.delete("/digitador/:id_digitador", DigitadorController.deleteByIdDigitador); //Elimina un digitador  
+router.delete("/digitador/:id_digitador", DigitadorController.deleteByIdDigitador); //Elimina un digitador
+router.get("/digitadorContar", DigitadorController.findByIdTotalDigitador); //Consulta todas los usuarios 
 //*****************************************************************************************
 
 
@@ -167,7 +169,8 @@ router.get("/liderUsuario/:id_usuario", LiderControllaer.findAllLiderUsuario); /
 router.get("/liderLugar/:id_lugar", LiderControllaer.findAllLiderLugar); //Consulta al lider por lugar
 router.get("/liderBarrio/:id_barrio", LiderControllaer.findAllLiderBarrio); //Consulta al lider por barrio
 router.put("/lider/:id_lider", LiderControllaer.updateLider); //Actualiza un lider
-router.delete("/lider/:id_lider", LiderControllaer.deleteByIdLider); //Elimina un lider  
+router.delete("/lider/:id_lider", LiderControllaer.deleteByIdLider); //Elimina un lider 
+router.get("/liderContar", LiderControllaer.findByIdTotalLider); //Consulta todas los usuarios 
 //*****************************************************************************************
 
 //*****************************************************************************************
@@ -184,6 +187,7 @@ router.get("/votanteLugar/:id_lugar", VotanteController.findAllVotanteLugar); //
 router.get("/votanteBarrio/:id_barrio", VotanteController.findAllVotanteBarrio); //Consulta al votante por barrio
 router.put("/votante/:id_votnte", VotanteController.updateVotante); //Actualiza un votante
 router.delete("/votante/:id_votnte", VotanteController.deleteByIdVotante); //Elimina un votante  
+router.get("/votanteContar", VotanteController.findByIdTotalVotante); //Consulta todas los usuarios 
 //*****************************************************************************************
 
 module.exports = router;

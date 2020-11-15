@@ -155,7 +155,7 @@ var deleteByIdUsuario = function(id_usuario) {
 
 /* Consulta el numero total de datos de la tabla coordinador */
 var findByIdTotalUsuarioCoordinador = function() {
-    return Models.UsuarioCoordinador.count({
+    return Models.Usuario.count({
         col: 'id_usuario',
         where: {
             id_tipo_usuario: 3
