@@ -27,6 +27,54 @@ var findByIdDigitadorCedula = function(req, res) {
     });
 };
 
+/*funcion consultar un dato de la tabla digitador filtrados por medio del baarrio*/
+var findAllDigitadorBarrio = function(req, res) {
+    /* llama a la funcion en el dao y le envia el parametro digitador*/
+    DigitadorDao.findAllDigitadorBarrio(req.params.id_barrio).then(function(digitador) {
+        /*si no hay error en la consulta enviar respuesta exitosa*/
+        Respuesta.sendJsonResponse(res, 200, digitador);
+    }).catch(function(error) {
+        /*si  hay error en la consulta enviar respuesta de error*/
+        Respuesta.sendJsonResponse(res, 500, error)
+    });
+};
+
+/*funcion consultar un dato de la tabla digitador filtrados por medio del lugar*/
+var findAllDigitadorLugar = function(req, res) {
+    /* llama a la funcion en el dao y le envia el parametro digitador*/
+    DigitadorDao.findAllDigitadorLugar(req.params.id_lugar).then(function(digitador) {
+        /*si no hay error en la consulta enviar respuesta exitosa*/
+        Respuesta.sendJsonResponse(res, 200, digitador);
+    }).catch(function(error) {
+        /*si  hay error en la consulta enviar respuesta de error*/
+        Respuesta.sendJsonResponse(res, 500, error)
+    });
+};
+
+/*funcion consultar un dato de la tabla digitador filtrados por medio del lider*/
+var findAllDigitadorLider = function(req, res) {
+    /* llama a la funcion en el dao y le envia el parametro digitador*/
+    DigitadorDao.findAllDigitadorLider(req.params.id_lider).then(function(digitador) {
+        /*si no hay error en la consulta enviar respuesta exitosa*/
+        Respuesta.sendJsonResponse(res, 200, digitador);
+    }).catch(function(error) {
+        /*si  hay error en la consulta enviar respuesta de error*/
+        Respuesta.sendJsonResponse(res, 500, error)
+    });
+};
+
+/*funcion consultar un dato de la tabla digitador filtrados por medio del lider*/
+var findAllDigitadorCoordinador = function(req, res) {
+    /* llama a la funcion en el dao y le envia el parametro digitador*/
+    DigitadorDao.findAllDigitadorCoordinador(req.params.id_usuario).then(function(digitador) {
+        /*si no hay error en la consulta enviar respuesta exitosa*/
+        Respuesta.sendJsonResponse(res, 200, digitador);
+    }).catch(function(error) {
+        /*si  hay error en la consulta enviar respuesta de error*/
+        Respuesta.sendJsonResponse(res, 500, error)
+    });
+};
+
 /*funcion consultar un dato en especifico de la tabla digitador*/
 var findByIdDigitador = function(req, res) {
     /* llama a la funcion en el dao y le envia el parametro digitador*/
@@ -148,3 +196,7 @@ module.exports.updateDigitador = updateDigitador;
 module.exports.insertDigitador = insertDigitador;
 module.exports.deleteByIdDigitador = deleteByIdDigitador;
 module.exports.findByIdTotalDigitador = findByIdTotalDigitador;
+module.exports.findAllDigitadorBarrio = findAllDigitadorBarrio;
+module.exports.findAllDigitadorLugar = findAllDigitadorLugar;
+module.exports.findAllDigitadorLider = findAllDigitadorLider;
+module.exports.findAllDigitadorCoordinador = findAllDigitadorCoordinador;

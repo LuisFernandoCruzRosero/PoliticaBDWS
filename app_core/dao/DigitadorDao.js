@@ -10,6 +10,54 @@ var findAllDigitador = function() {
     });
 };
 
+/* consulta los datos de la tabla Digitador por barrio y los ordena por nombre */
+var findAllDigitadorBarrio = function(id_barrio) {
+    return Models.Digitador.findAll({
+        where: {
+            id_barrio: id_barrio
+        },
+        order: [
+            ['nom_digitador', 'ASC']
+        ],
+    });
+};
+
+/* consulta los datos de la tabla Digitador por lugar y los ordena por nombre */
+var findAllDigitadorLugar = function(id_lugar) {
+    return Models.Digitador.findAll({
+        where: {
+            id_lugar: id_lugar
+        },
+        order: [
+            ['nom_digitador', 'ASC']
+        ],
+    });
+};
+
+/* consulta los datos de la tabla Digitador por lider y los ordena por nombre */
+var findAllDigitadorLider = function(id_lider) {
+    return Models.Digitador.findAll({
+        where: {
+            id_lider: id_lider
+        },
+        order: [
+            ['nom_digitador', 'ASC']
+        ],
+    });
+};
+
+/* consulta los datos de la tabla Digitador por lider y los ordena por nombre */
+var findAllDigitadorCoordinador = function(id_usuario) {
+    return Models.Digitador.findAll({
+        where: {
+            id_usuario: id_usuario
+        },
+        order: [
+            ['nom_digitador', 'ASC']
+        ],
+    });
+};
+
 /*consulta los datos de la tabla Digitador filtrado por cedula */
 var findByIdDigitadorCedula = function(ced_digitador) {
     return Models.Digitador.find({
@@ -120,3 +168,7 @@ module.exports.updateDigitador = updateDigitador;
 module.exports.insertDigitador = insertDigitador;
 module.exports.deleteByIdDigitador = deleteByIdDigitador;
 module.exports.findByIdTotalDigitador = findByIdTotalDigitador;
+module.exports.findAllDigitadorBarrio = findAllDigitadorBarrio;
+module.exports.findAllDigitadorLugar = findAllDigitadorLugar;
+module.exports.findAllDigitadorLider = findAllDigitadorLider;
+module.exports.findAllDigitadorCoordinador = findAllDigitadorCoordinador;

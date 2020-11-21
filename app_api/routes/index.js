@@ -154,6 +154,10 @@ router.get("/digitadorCedula/:ced_digitador", DigitadorController.findByIdDigita
 router.put("/digitador/:id_digitador", DigitadorController.updateDigitador); //Actualiza un digitador
 router.delete("/digitador/:id_digitador", DigitadorController.deleteByIdDigitador); //Elimina un digitador
 router.get("/digitadorContar", DigitadorController.findByIdTotalDigitador); //Consulta todas los usuarios 
+router.get("/digitadorBarrio/:id_barrio", DigitadorController.findAllDigitadorBarrio); //Consulta al digitador
+router.get("/digitadorLugar/:id_lugar", DigitadorController.findAllDigitadorLugar); //Consulta al digitador
+router.get("/digitadorLider/:id_lider", DigitadorController.findAllDigitadorLider); //Consulta al digitador
+router.get("/digitadorCoordinador/:id_usuario", DigitadorController.findAllDigitadorCoordinador); //Consulta al digitador
 //*****************************************************************************************
 
 
