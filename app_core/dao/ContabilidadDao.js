@@ -80,7 +80,7 @@ var findAllContabilidadIdentificacion = function(identificaacion) {
 
 /*consulta un dato de la tabla contabilidad en especifico*/
 var findByIdContabilidad = function(id_contabilidad) {
-    return Models.Contabilidad.find({
+    return Models.Contabilidad.findAll({
         where: {
             id_contabilidad: id_contabilidad
         }

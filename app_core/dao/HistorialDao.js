@@ -43,7 +43,7 @@ var findAllHistorialFecha = function(fec_historial) {
 };
 /*consulta un dato de la tabla historial en especifico*/
 var findByIdHistorial = function(id_historial) {
-    return Models.Historial.find({
+    return Models.Historial.findAll({
         where: {
             id_historial: id_historial
         }

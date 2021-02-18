@@ -62,6 +62,21 @@ var findAllUsuarioCoordinador = function(req, res) {
     });
 };
 
+
+
+/*funcion consultar los datos de la tabla usuario filtrados por medio del coordinador*/
+var findByIdUsuarioCoordinador = function(req, res) {
+    /* llama a la funcion en el dao */
+    UsuarioDao.findByIdUsuarioCoordinador().then(function(id_usuario) {
+        /*si no hay error en la consulta enviar respuesta exitosa*/
+        Respuesta.sendJsonResponse(res, 200, usuario);
+    }).catch(function(error) {
+        /*si  hay error en la consulta enviar respuesta de error*/
+        Respuesta.sendJsonResponse(res, 500, error)
+    });
+};
+
+
 /*funcion consultar los datos de la tabla usuario filtrados por medio de la cedula del coordinador*/
 var findAllUsuarioCoordinadorCedula = function(req, res) {
     /* llama a la funcion en el dao y le envia el parametro ced_usuario*/
@@ -90,6 +105,28 @@ var findAllUsuario = function(req, res) {
 var findAllUsuarioCedula = function(req, res) {
     /* llama a la funcion en el dao y le envia el parametro ced_usuario*/
     UsuarioDao.findAllUsuarioCedula(req.params.ced_usuario).then(function(usuario) {
+        /*si no hay error en la consulta enviar respuesta exitosa*/
+        Respuesta.sendJsonResponse(res, 200, usuario);
+    }).catch(function(error) {
+        /*si  hay error en la consulta enviar respuesta de error*/
+        Respuesta.sendJsonResponse(res, 500, error)
+    });
+};
+
+var findAllUsuarioCoordinadorLugar = function(req, res) {
+    /* llama a la funcion en el dao y le envia el parametro ced_usuario*/
+    UsuarioDao.findAllUsuarioCoordinadorLugar(req.params.id_lugar).then(function(usuario) {
+        /*si no hay error en la consulta enviar respuesta exitosa*/
+        Respuesta.sendJsonResponse(res, 200, usuario);
+    }).catch(function(error) {
+        /*si  hay error en la consulta enviar respuesta de error*/
+        Respuesta.sendJsonResponse(res, 500, error)
+    });
+};
+
+var findAllUsuarioCoordinadorBarrio = function(req, res) {
+    /* llama a la funcion en el dao y le envia el parametro ced_usuario*/
+    UsuarioDao.findAllUsuarioCoordinadorBarrio(req.params.id_barrio).then(function(usuario) {
         /*si no hay error en la consulta enviar respuesta exitosa*/
         Respuesta.sendJsonResponse(res, 200, usuario);
     }).catch(function(error) {
@@ -221,3 +258,6 @@ module.exports.insertUsuario = insertUsuario;
 module.exports.deleteByIdUsuario = deleteByIdUsuario;
 module.exports.findAllUsuarioCoordinador = findAllUsuarioCoordinador;
 module.exports.findByIdTotalUsuarioCoordinador = findByIdTotalUsuarioCoordinador;
+module.exports.findByIdUsuarioCoordinador = findByIdUsuarioCoordinador;
+module.exports.findAllUsuarioCoordinadorLugar = findAllUsuarioCoordinadorLugar;
+module.exports.findAllUsuarioCoordinadorBarrio = findAllUsuarioCoordinadorBarrio;

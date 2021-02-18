@@ -137,6 +137,9 @@ router.get("/usuarioAdministradorCedula", UsuarioController.findAllUsuarioAdmini
 router.get("/usuarioCoordinador", UsuarioController.findAllUsuarioCoordinador); //Consulta todas los usuarios por el coordindor
 router.get("/usuarioCoordinadorCedula/:ced_usuario", UsuarioController.findAllUsuarioCoordinadorCedula); //Consulta el coordinador por  la cedula
 router.get("/usuario", UsuarioController.findAllUsuario); //Consulta todas los usuarios
+router.get("/usuarioCoordinadorLugar/:id_lugar", UsuarioController.findAllUsuarioCoordinadorLugar);
+router.get("/usuarioCoordinadorBarrio/:id_barrio", UsuarioController.findAllUsuarioCoordinadorBarrio);
+router.get("/usuarioCoordinador/:id_usuario", UsuarioController.findByIdUsuarioCoordinador);
 router.get("/usuarioCedula/:ced_usuario", UsuarioController.findAllUsuarioCedula); //Consulta todas los usuarios por la cedula
 router.get("/usuario/:id_usaurio", UsuarioController.findByIdUsuario); //Consulta todas los usuarios
 router.put("/usuario/:id_usuario", UsuarioController.updateUsuario); //Actualiza un usuario
@@ -181,16 +184,16 @@ router.get("/liderContar", LiderControllaer.findByIdTotalLider); //Consulta toda
 //******CRUD de votante******
 router.post("/votante", VotanteController.insertVotante); //Inserta un votante nuevo
 router.get("/votante", VotanteController.findAllVotante); //Consulta al votante
-router.get("/votante/:id_votnte", VotanteController.findByIdVotante); //Consulta todos los votantes
-router.get("/votanteCedula/:ced_votnte", VotanteController.findByIVotanteCedula); //Consulta al votante por cedula
+router.get("/votante/:id_votante", VotanteController.findByIdVotante); //Consulta todos los votantes
+router.get("/votanteCedula/:ced_votante", VotanteController.findByIVotanteCedula); //Consulta al votante por cedula
 router.get("/votanteComunaBarrio/:id_comunaB", VotanteController.findAllVotanteComunaBarrio); //Consulta al votante por comuna de barrio
 router.get("/votanteComunaLugar/:id_comunaL", VotanteController.findAllVotanteComunaLugar); //Consulta al votante por comuna de lugar
 router.get("/votanteUsuario/:id_usuario", VotanteController.findAllVotanteUsuario); //Consulta al votante por usuario
 router.get("/votanteLider/:id_lider", VotanteController.findAllVotanteLider); //Consulta al votante por lider
 router.get("/votanteLugar/:id_lugar", VotanteController.findAllVotanteLugar); //Consulta al votante por lugar
 router.get("/votanteBarrio/:id_barrio", VotanteController.findAllVotanteBarrio); //Consulta al votante por barrio
-router.put("/votante/:id_votnte", VotanteController.updateVotante); //Actualiza un votante
-router.delete("/votante/:id_votnte", VotanteController.deleteByIdVotante); //Elimina un votante  
+router.put("/votante/:id_votante", VotanteController.updateVotante); //Actualiza un votante
+router.delete("/votante/:id_votante", VotanteController.deleteByIdVotante); //Elimina un votante  
 router.get("/votanteContar", VotanteController.findByIdTotalVotante); //Consulta todas los usuarios 
 //*****************************************************************************************
 

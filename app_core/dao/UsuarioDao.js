@@ -2,7 +2,7 @@ var Models = require("../models/index");
 var sequelize = Models.sequelize;
 /*consulta los datos de la tabla usuario filtrados por candidato*/
 var findAllUsuarioCandidato = function() {
-    return Models.Usuario.find({
+    return Models.Usuario.findAll({
         where: {
             id_tipo_usu: 2
         }
@@ -10,7 +10,7 @@ var findAllUsuarioCandidato = function() {
 };
 /*consulta los datos de la tabla usuario filtrados por candidatocedula*/
 var findAllUsuarioCandidatoCedula = function(ced_usuario) {
-    return Models.Usuario.find({
+    return Models.Usuario.findAll({
         where: {
             id_tipo_usu: 2,
             ced_usuario: ced_usuario
@@ -19,7 +19,7 @@ var findAllUsuarioCandidatoCedula = function(ced_usuario) {
 };
 /*consulta los datos de la tabla usuario filtrados por administrador*/
 var findAllUsuarioAdministrador = function() {
-    return Models.Usuario.find({
+    return Models.Usuario.findAll({
         where: {
             id_tipo_usu: 1
         }
@@ -27,7 +27,7 @@ var findAllUsuarioAdministrador = function() {
 };
 /*consulta los datos de la tabla usuario filtrados por admiistradorcedula*/
 var findAllUsuarioAdministradorCedula = function(ced_usuario) {
-    return Models.Usuario.find({
+    return Models.Usuario.findAll({
         where: {
             id_tipo_usu: 1,
             ced_usuario: ced_usuario
@@ -46,9 +46,49 @@ var findAllUsuarioCoordinador = function() {
     });
 };
 
+
+/*consulta los datos de la tabla usuario filtrados por coordinador*/
+var findByIdUsuarioCoordinador = function(id_usuario) {
+    return Models.Usuario.findAll({
+        where: {
+            id_tipo_usuario: 3,
+            id_usuario: id_usuario,
+        },
+        order: [
+            ['nom_usuario', 'ASC']
+        ],
+    });
+};
+
+
+var findAllUsuarioCoordinadorLugar = function(id_lugar) {
+    return Models.Usuario.findAll({
+        where: {
+            id_tipo_usuario: 3,
+            id_lugar: id_lugar,
+        },
+        order: [
+            ['nom_usuario', 'ASC']
+        ],
+    });
+};
+
+
+var findAllUsuarioCoordinadorBarrio = function(id_barrio) {
+    return Models.Usuario.findAll({
+        where: {
+            id_tipo_usuario: 3,
+            id_barrio: id_barrio,
+        },
+        order: [
+            ['nom_usuario', 'ASC']
+        ],
+    });
+};
+
 /*consulta los datos de la tabla usuario filtrados por coordinadorcedula*/
 var findAllUsuarioCoordinadorCedula = function(ced_usuario) {
-    return Models.Usuario.find({
+    return Models.Usuario.findAll({
         where: {
             id_tipo_usuario: 3,
             ced_usuario: ced_usuario
@@ -65,7 +105,7 @@ var findAllUsuario = function() {
 };
 /*consulta los datos de la tabla usuario filtrados por usuariocedula*/
 var findAllUsuarioCedula = function(ced_usuario) {
-    return Models.Usuario.find({
+    return Models.Usuario.findAll({
         where: {
             ced_usuario: ced_usuario
         }
@@ -73,7 +113,7 @@ var findAllUsuarioCedula = function(ced_usuario) {
 };
 /*consulta un dato de la tabla usuario en especifico*/
 var findByIdUsuario = function(id_usuario) {
-    return Models.Usuario.find({
+    return Models.Usuario.findAll({
         where: {
             id_usuario: id_usuario
         }
@@ -176,3 +216,6 @@ module.exports.insertUsuario = insertUsuario;
 module.exports.deleteByIdUsuario = deleteByIdUsuario;
 module.exports.findAllUsuarioCoordinador = findAllUsuarioCoordinador;
 module.exports.findByIdTotalUsuarioCoordinador = findByIdTotalUsuarioCoordinador;
+module.exports.findByIdUsuarioCoordinador = findByIdUsuarioCoordinador;
+module.exports.findAllUsuarioCoordinadorLugar = findAllUsuarioCoordinadorLugar;
+module.exports.findAllUsuarioCoordinadorBarrio = findAllUsuarioCoordinadorBarrio;

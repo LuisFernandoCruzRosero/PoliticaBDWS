@@ -10,7 +10,7 @@ var findAllLider = function() {
 };
 
 var findAllLiderCedula = function(ced_lider) {
-    return Models.Lider.find({
+    return Models.Lider.findAll({
         where: {
             ced_lider: ced_lider
         }
@@ -73,7 +73,7 @@ var findAllLiderUsuario = function(id_usuario) {
 };
 
 var findByIdLider = function(id_lider) {
-    return Models.Lider.find({
+    return Models.Lider.findAll({
         where: {
             id_lider: id_lider
         }

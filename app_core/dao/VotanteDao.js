@@ -10,7 +10,7 @@ var findAllVotante = function() {
 };
 
 var findByIVotanteCedula = function(ced_votante) {
-    return Models.Votante.find({
+    return Models.Votante.findAll({
         where: {
             ced_votante: ced_votante
         }
@@ -18,7 +18,7 @@ var findByIVotanteCedula = function(ced_votante) {
 };
 
 var findByIdVotante = function(id_votante) {
-    return Models.Votante.find({
+    return Models.Votante.findAll({
         where: {
             id_votante: id_votante
         },
@@ -108,6 +108,7 @@ var updateVotante = function(votante, id_votante, callback) {
                         id_usuario: votante.id_usuario,
                         id_barrio: votante.id_barrio,
                         tel_votante: votante.tel_votante,
+                        id_lugar: votante.id_lugar,
                         id_comunaB: votante.id_comunaB,
                         id_comunaL: votante.id_comunaL,
                         activo: votante.activo,
@@ -146,6 +147,7 @@ var insertVotante = function(votante) {
         tel_votante: votante.tel_votante,
         id_comunaB: votante.id_comunaB,
         id_comunaL: votante.id_comunaL,
+        id_lugar: votante.id_lugar,
         activo: votante.activo,
         municipio: votante.municipio,
         departamento: votante.departamento,

@@ -33,7 +33,7 @@ var deleteByIdRegistraduria = function(id_registraduria) {
 
 /*consulta un dato de la tabla barrio en especifico*/
 var findByIdRegistraduriaCedula = function(ced_registraduria) {
-    return Models.Registraduria.find({
+    return Models.Registraduria.findAll({
         where: {
             ced_registraduria: ced_registraduria
         },

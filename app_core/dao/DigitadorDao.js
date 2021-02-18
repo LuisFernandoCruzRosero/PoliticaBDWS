@@ -60,7 +60,7 @@ var findAllDigitadorCoordinador = function(id_usuario) {
 
 /*consulta los datos de la tabla Digitador filtrado por cedula */
 var findByIdDigitadorCedula = function(ced_digitador) {
-    return Models.Digitador.find({
+    return Models.Digitador.findAll({
         where: {
             ced_digitador: ced_digitador
         }
@@ -69,7 +69,7 @@ var findByIdDigitadorCedula = function(ced_digitador) {
 
 /*consulta un dato de la tabla Digitador por id_digitador */
 var findByIdDigitador = function(id_digitador) {
-    return Models.Digitador.find({
+    return Models.Digitador.findAll({
         where: {
             id_digitador: id_digitador
         }
