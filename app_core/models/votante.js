@@ -1,9 +1,9 @@
-/* modelo utilizado para BD tabla VOTANTE */
+/*jshintindent:2*/
 module.exports = function(sequelize,
     DataTypes) {
     return sequelize.define('Votante',
 
-        { /*campos de la tabla */
+        {
             id_votante: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
@@ -66,14 +66,11 @@ module.exports = function(sequelize,
         },
 
         {
-            /* Nombre de la tabla */
             tableName: 'votante',
             timestamps: false,
             underscored: true,
             freezeTableName: true,
-            /* nombre del esquema */
             schema: 'usuarios',
-            /* Funcion de llaves foraneas */
             classMethods: {
                 associate: function(models) {
                     models.Votante.belongsTo(models.Lider,

@@ -120,10 +120,12 @@ router.get("/contabilidad/:id_contabilidad", ContabilidadController.findByIdCont
 
 //*****************************************************************************************
 //******CRUD de Registraduria******
+router.put("/registraduria/:id_registraduria", RegistraduriaController.updateRegistraduria); //Consulta un contabilidad lugar
 router.post("/registraduria", RegistraduriaController.insertRegistraduria); //Inserta un registraduria nuevo
 router.get("/registraduria", RegistraduriaController.findAllRegistraduria); //Consulta todas los registraduria
-router.get("/registraduriaCedula/:ced_registraduria", RegistraduriaController.findByIdRegistraduriaCedula); //Consulta un registraduria lugar
+router.get("/registraduriaLugar/:id_lugar", RegistraduriaController.findAllRegistraduriaLugar); //Consulta todas los registraduria
 router.get("/registraduria/:id_registraduria", RegistraduriaController.findByIdRegistraduria); //Consulta  registraduria por fecha
+router.delete("/registraduria/:id_registraduria", RegistraduriaController.deleteByIdRegistraduria); //Consulta  registraduria por fecha
 //*****************************************************************************************
 
 

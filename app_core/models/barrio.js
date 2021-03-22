@@ -1,9 +1,9 @@
-/* modelo utilizado para BD tabla BARRIO */
+/*jshintindent:2*/
 module.exports = function(sequelize,
     DataTypes) {
     return sequelize.define('Barrio',
 
-        { /*campos de la tabla */
+        {
             id_barrio: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
@@ -34,14 +34,11 @@ module.exports = function(sequelize,
         },
 
         {
-            /* Nombre de la tabla */
             tableName: 'barrio',
             timestamps: false,
             underscored: true,
             freezeTableName: true,
-            /* nombre del esquema */
             schema: 'lugares',
-            /* Funcion de llaves foraneas */
             classMethods: {
                 associate: function(models) {
                     models.Barrio.belongsTo(models.Comuna,

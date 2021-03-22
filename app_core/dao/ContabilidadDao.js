@@ -4,10 +4,10 @@ var sequelize = Models.sequelize;
 /*Insertar un dato en la tabla contabilidad*/
 var insertContabilidad = function(contabilidad) {
     return Models.Contabilidad.create({
-        id_usuario: contabilidad.ced_usu,
+        id_usuario: contabilidad.id_usuario,
         descripcion: contabilidad.descripcion,
         valor: contabilidad.valor,
-        identificaacion: contabilidad.identificaacion,
+        identificacion: contabilidad.identificacion,
         nombre: contabilidad.nombre,
     });
 };
@@ -30,10 +30,10 @@ var updateContabilidad = function(contabilidad, id_contabilidad, callback) {
         .then(function(resultado) {
             if (resultado) {
                 resultado.updateAttributes({
-                        id_usuario: contabilidad.ced_usu,
+                        id_usuario: contabilidad.id_usuario,
                         descripcion: contabilidad.descripcion,
                         valor: contabilidad.valor,
-                        identificaacion: contabilidad.identificaacion,
+                        identificacion: contabilidad.identificacion,
                         nombre: contabilidad.nombre,
                     })
                     .then(function(contabilidadActualizada) {
@@ -67,10 +67,10 @@ var deleteByIdContabilidad = function(id_contabilidad) {
 };
 
 /*consulta los datos de la tabla contabilidad filtrados por identificacion*/
-var findAllContabilidadIdentificacion = function(identificaacion) {
+var findAllContabilidadIdentificacion = function(identificacion) {
     return Models.Contabilidad.findAll({
         where: {
-            identificaacion: identificaacion
+            identificacion: identificacion
         },
         order: [
             ['id_contabilidad', 'ASC']

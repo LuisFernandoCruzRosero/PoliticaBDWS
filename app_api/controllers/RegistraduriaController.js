@@ -7,12 +7,8 @@ var Respuesta = require("../../app_core/helpers/respuesta");
 var insertRegistraduria = function(req, res) {
     /*objeto que recoge los datos enviados desde la app*/
     var registraduria = {
-        ced_registraduria: req.body.ced_registraduria,
-        nom_registraduria: req.body.nom_registraduria,
         id_lugar: req.body.id_lugar,
-        id_mesa: req.body.id_mesa,
-        dep_registraduria: req.body.dep_registraduria,
-        mun_registraduria: req.body.mun_registraduria,
+        total: req.body.total,
     };
     /* llama a la funcion en el dao y le envia el objeto registraduria*/
     RegistraduriaDao.insertRegistraduria(registraduria).then(function(registraduria) {
@@ -50,6 +46,18 @@ var deleteByIdRegistraduria = function(req, res) {
         Respuesta.sendJsonResponse(res, 500, error);
     });
 };
+
+/*funcion eliminar  los datos de la agenda por el id*/
+var findAllRegistraduriaLugar = function(req, res) {
+    /* llama a la funcion en el dao y le envia el parametro id_registraduria*/
+    RegistraduriaDao.findAllRegistraduriaLugar(req.params.id_lugar).then(function(registraduria) {
+        /*si no hay error en la consulta enviar respuesta exitosa*/
+        Respuesta.sendJsonResponse(res, 200, registraduria);
+    }).catch(function(error) {
+        /*si  hay error en el eliminar enviar respuesta de error*/
+        Respuesta.sendJsonResponse(res, 500, error);
+    });
+};
 /*funcion consultar los datos de la tabla registraduria filtrados por medio de la cedula*/
 var findByIdRegistraduriaCedula = function(req, res) {
     /* llama a la funcion en el dao y le envia el parametro ced_registarduria*/
@@ -73,9 +81,37 @@ var findByIdRegistraduria = function(req, res) {
         Respuesta.sendJsonResponse(res, 500, error)
     });
 };
+
+/*funcion de actualizar los datos de la tabla mesa*/
+var updateRegistraduria = function(req, res) {
+    /*recoge el parametro enviado desde la app*/
+    var id_registraduria = req.params.id_registraduria;
+    /*objeto que recoge los datos enviados desde la app*/
+    var actualizarRegistraduria = {
+        total: req.body.total,
+    };
+    /* llama a la funcion en el dao y le envia el objeto agenda y el parametro id_mesa*/
+    RegistraduriaDao.updateRegistraduria(actualizarRegistraduria, id_registraduria, function(registraduria, err) {
+            if (err) {
+                /*si hay error en el modificar enviar respuesta error*/
+                Respuesta.sendJsonResponse(res, 500, err);
+            }
+            if (registraduria) {
+                /*si no hay error en el modificar enviar respuesta exitosa*/
+                Respuesta.sendJsonResponse(res, 200, registraduria);
+            }
+        })
+        .catch(function(err) {
+            /*si hay error en el modificar enviar respuesta error*/
+            Respuesta.sendJsonResponse(res, 500, err);
+        });
+
+};
 /*exportar funciones*/
 module.exports.insertRegistraduria = insertRegistraduria;
 module.exports.findAllRegistraduria = findAllRegistraduria;
 module.exports.deleteByIdRegistraduria = deleteByIdRegistraduria;
 module.exports.findByIdRegistraduriaCedula = findByIdRegistraduriaCedula;
 module.exports.findByIdRegistraduria = findByIdRegistraduria;
+module.exports.updateRegistraduria = updateRegistraduria;
+module.exports.findAllRegistraduriaLugar = findAllRegistraduriaLugar;

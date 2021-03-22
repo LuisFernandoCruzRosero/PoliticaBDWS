@@ -1,9 +1,9 @@
-/* modelo utilizado para BD tabla COMUNA */
+/*jshintindent:2*/
 module.exports = function(sequelize,
     DataTypes) {
     return sequelize.define('Comuna',
 
-        { /*campos de la tabla */
+        {
             id_comuna: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
@@ -12,20 +12,17 @@ module.exports = function(sequelize,
             },
             nom_comuna: {
                 type: DataTypes.STRING,
-                allowNull: true /* JARR */
+                allowNull: true
             }
 
         },
 
         {
-            /* Nombre de la tabla */
             tableName: 'comuna',
             timestamps: false,
             underscored: true,
             freezeTableName: true,
-            /* nombre del esquema */
             schema: 'lugares',
-            /* Funcion de llaves foraneas */
             classMethods: {
                 associate: function(models) {
                     models.Comuna.hasMany(models.Barrio,

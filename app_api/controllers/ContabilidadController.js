@@ -9,7 +9,7 @@ var insertContabilidad = function(req, res) {
         id_usuario: req.body.id_usuario,
         descripcion: req.body.descripcion,
         valor: req.body.valor,
-        identificaacion: req.body.identificaacion,
+        identificacion: req.body.identificacion,
         nombre: req.body.nombre,
     };
     /* llama a la funcion en el dao y le envia el objeto contabilidad*/
@@ -41,7 +41,7 @@ var updateContabilidad = function(req, res) {
         id_usuario: req.body.id_usuario,
         descripcion: req.body.descripcion,
         valor: req.body.valor,
-        identificaacion: req.body.identificaacion,
+        identificacion: req.body.identificacion,
         nombre: req.body.nombre,
     };
     /* llama a la funcion en el dao y le envia el objeto contabilidad y el parametro id_contabilidad*/
