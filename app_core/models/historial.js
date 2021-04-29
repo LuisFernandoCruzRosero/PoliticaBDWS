@@ -14,11 +14,15 @@ module.exports = function(sequelize,
                 type: DataTypes.DATEONLY,
                 allowNull: true
             },
-            id_lugar: {
-                type: DataTypes.INTEGER,
-                allowNull: true /* JARR */
-            },
             total: {
+                type: DataTypes.STRING,
+                allowNull: true
+            },
+            ced_candidato: {
+                type: DataTypes.STRING,
+                allowNull: true
+            },
+            nom_candidato: {
                 type: DataTypes.STRING,
                 allowNull: true
             }
@@ -33,12 +37,6 @@ module.exports = function(sequelize,
             schema: 'historial',
             classMethods: {
                 associate: function(models) {
-                    models.Historial.belongsTo(models.Lugar,
-
-                        {
-                            foreignKey: 'id_lugar'
-                        }
-                    );
 
                 }
 

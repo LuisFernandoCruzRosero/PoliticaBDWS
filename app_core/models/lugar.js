@@ -53,12 +53,6 @@ module.exports = function(sequelize,
                             foreignKey: 'id_lugar'
                         }
                     );
-                    models.Lugar.hasMany(models.Historial,
-
-                        {
-                            foreignKey: 'id_lugar'
-                        }
-                    );
                     models.Lugar.hasMany(models.Lider,
 
                         {

@@ -22,12 +22,16 @@ module.exports = function(sequelize,
                 type: DataTypes.DOUBLE,
                 allowNull: true
             },
-            identificacion: {
+            identificaacion: {
                 type: DataTypes.STRING,
                 allowNull: true
             },
             nombre: {
                 type: DataTypes.STRING,
+                allowNull: true
+            },
+            ingreso_egreso: {
+                type: DataTypes.BOOLEAN,
                 allowNull: true
             }
 

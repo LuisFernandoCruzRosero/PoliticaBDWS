@@ -101,9 +101,12 @@ router.get("/agendaContar", AgendaController.findByIdTotalAgenda); //Consulta el
 //******CRUD de Historial******
 router.post("/historial", HistorialController.insertHistorial); //Inserta un historial nuevo
 router.get("/historial", HistorialController.findAllHistorial); //Consulta todas los historial
-router.get("/historialLugar/:id_lugar", HistorialController.findAllHistorialLugar); //Consulta un historial lugar
+router.get("/historialCedula/:ced_candidato", HistorialController.findAllHistorialCedula); //Consulta un historial lugar
+router.get("/historialNombre/:nom_candidato", HistorialController.findAllHistorialNombre); //Consulta un historial lugar
 router.get("/historialFecha/:fec_historial", HistorialController.findAllHistorialFecha); //Consulta  historial por fecha
 router.get("/historial/:id_historial", HistorialController.findByIdHistorial); //Consulta historial unico
+router.put('/historial/:id_historial', HistorialController.updateHistorial); // Actualizar una agenda
+router.delete("/historial/:id_historial", HistorialController.deleteByIdHistoral); //Elimina una de las agenda
 //*****************************************************************************************
 
 
